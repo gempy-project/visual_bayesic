@@ -1,5 +1,4 @@
 from argparse import ArgumentParser
-from xai_components.base import SubGraphExecutor
 from xai_components.xai_custom.add_node import AddTwoFloats
 from xai_components.xai_template.example_components import HelloHyperparameter
 
