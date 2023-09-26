@@ -1,5 +1,6 @@
 from xai_components.base import InArg, OutArg, Component, xai_component
 
+
 @xai_component
 class AddTwoFloats(Component):
     input_1: InArg[float]
