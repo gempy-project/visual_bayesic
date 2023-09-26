@@ -5,7 +5,7 @@ from xai_components.base import InArg, OutArg, Component, xai_component
 
 
 @xai_component
-class NormalDistribution(Component):
+class NormalDistributionPyro(Component):
     loc: InArg[float]
     scale: InArg[float]
     population: InArg[float]

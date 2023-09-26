@@ -2,7 +2,7 @@ from xai_components.base import InArg, OutArg, Component, xai_component
 import tensorflow_probability as tfp
 
 @xai_component
-class NormalDistribution(Component):
+class NormalDistributionTF(Component):
     loc: InArg[float]
     scale: InArg[float]
     population: InArg[float]
