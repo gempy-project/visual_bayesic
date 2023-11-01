@@ -3,7 +3,6 @@ import os
 import sys
 import warnings
 from visual_bayesic import __version__
-import xai_components
 
 from sphinx_gallery.sorting import FileNameSortKey
 import numpy as np
@@ -13,8 +12,8 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # External examples:
 import make_external_gallery
-make_external_gallery.make_example_gallery()
 
+make_external_gallery.make_example_gallery()
 
 # -- General configuration ------------------------------------------------
 
@@ -37,7 +36,7 @@ linkcheck_timeout = 500
 
 autosummary_generate = True
 add_module_names = True
-numpydoc_show_class_members=False
+numpydoc_show_class_members = False
 
 intersphinx_mapping = {
     'numpy': ('https://numpy.org/doc/stable/', None),
@@ -82,11 +81,12 @@ todo_include_todos = True
 # -- Sphinx Gallery Options
 
 root_examples_dir = "../../examples/examples/"
-examples_dirs = [root_examples_dir] + [os.path.join(root_examples_dir, d) for d in os.listdir(root_examples_dir) if os.path.isdir(os.path.join(root_examples_dir, d))]
 
 sphinx_gallery_conf = {
     # path to your examples scripts
-    "examples_dirs": examples_dirs,
+    "examples_dirs": [
+        "../../examples/",
+    ],
     # path where to save gallery generated examples
     "gallery_dirs": [
         "examples",
@@ -118,7 +118,6 @@ linkcheck_request_header = {
     '*': {'Accept': 'text/html,application/xhtml+xml;q=0.9,*/*;q=0.8'},
     'https://github.com': {}
 }
-
 
 # -- Options for HTML output ----------------------------------------------
 html_theme = 'sphinx_rtd_theme'
@@ -156,6 +155,7 @@ htmlhelp_basename = 'visual-bayesic-doc'
 warnings.filterwarnings("ignore", category=UserWarning,
                         message='Matplotlib is currently using agg, which is a'
                                 ' non-GUI backend, so cannot show the figure.')
+
 
 # -- CSS fixes --
 def setup(app):
