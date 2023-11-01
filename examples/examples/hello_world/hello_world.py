@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
-from visual_bayesic.xai_components.xai_custom import AddTwoFloats
-from visual_bayesic.xai_components.xai_template.example_components import HelloHyperparameter
+from xai_components import AddTwoFloats
+from xai_components import HelloHyperparameter
 
 def main(args):
     ctx = {}

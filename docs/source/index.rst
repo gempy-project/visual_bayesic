@@ -45,10 +45,4 @@ requires ``pandas`` and ``numpy``).
    :hidden:
    :caption: API Reference
 
-   code-geological-formats
-   code-interfaces
-   code-reader
-   code-structs
-   code-utils
-   code-viz
-   code-writer
+

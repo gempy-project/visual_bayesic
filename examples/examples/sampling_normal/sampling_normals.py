@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
-from visual_bayesic.xai_components.xai_plotting import VisualizeNormalDistribution
-from visual_bayesic.xai_components import NormalDistributionPyro
-from visual_bayesic.xai_components.xai_tensorflow_probability import NormalDistributionTF
+from xai_components.xai_plotting import VisualizeNormalDistribution
+from xai_components import NormalDistributionPyro
+from xai_components import NormalDistributionTF
 
 def main(args):
     ctx = {}

@@ -1,4 +1,4 @@
-from visual_bayesic.xai_components.base import InArg, OutArg, Component, xai_component
+from xai_components.base import InArg, OutArg, Component, xai_component
 
 
 @xai_component

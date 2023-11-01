@@ -1,12 +1,12 @@
 {
     "id": "88113143-0a44-4705-82fd-86df0a34f130",
-    "offsetX": 233.54253752550764,
-    "offsetY": 188.05485623344305,
-    "zoom": 106.66666666666669,
+    "offsetX": -7.830653584291021,
+    "offsetY": 245.01835743942488,
+    "zoom": 74.99999999999993,
     "gridSize": 0,
     "layers": [
         {
-            "id": "b249dee6-ccdc-4e2d-a6f8-4553ae4c35d7",
+            "id": "72c74083-2ea1-4cb9-a353-b304caef155e",
             "type": "diagram-links",
             "isSvg": true,
             "transformed": true,
@@ -107,7 +107,7 @@
                         {
                             "id": "576d0eaf-6ecb-4643-91b6-95382b2be367",
                             "type": "point",
-                            "x": 370.063,
+                            "x": 370.062,
                             "y": 474.734
                         },
                         {
@@ -137,6 +137,13 @@
                             "type": "point",
                             "x": 377.984,
                             "y": 536.844
+                        },
+                        {
+                            "id": "6e13b1ae-132c-4256-bcdf-635a4b9ca6b9",
+                            "type": "point",
+                            "selected": false,
+                            "x": 662.126,
+                            "y": 475.696
                         },
                         {
                             "id": "05ffb3f9-a50a-47fa-bddc-de38fbb35b35",
@@ -527,7 +534,7 @@
                         {
                             "id": "fed18350-0dc9-4f98-8157-c9f84ad6640f",
                             "type": "point",
-                            "x": 502.813,
+                            "x": 502.812,
                             "y": 173.391
                         },
                         {
@@ -555,7 +562,7 @@
                         {
                             "id": "7e2dcc3f-ba7d-481e-858c-30137cbffb21",
                             "type": "point",
-                            "x": 502.813,
+                            "x": 502.812,
                             "y": 157.391
                         },
                         {
@@ -583,7 +590,7 @@
                         {
                             "id": "0d617621-03e5-49a3-8fe5-34dd61396be0",
                             "type": "point",
-                            "x": 502.813,
+                            "x": 502.812,
                             "y": 173.391
                         },
                         {
@@ -602,7 +609,7 @@
             }
         },
         {
-            "id": "0c64c88d-ee15-49a5-99a7-5cc95d8881a1",
+            "id": "4a41b30d-5f7a-4c20-b9d1-c4780d5015f1",
             "type": "diagram-nodes",
             "isSvg": false,
             "transformed": true,
@@ -718,7 +725,7 @@
                         {
                             "id": "7176e587-c398-48d5-a46c-bd087144f5d6",
                             "type": "default",
-                            "x": 362.563,
+                            "x": 362.562,
                             "y": 467.234,
                             "name": "out-0",
                             "alignment": "right",
@@ -1304,7 +1311,7 @@
                         {
                             "id": "cdcccc17-7f16-4524-99e9-2bd98473e882",
                             "type": "default",
-                            "x": 495.313,
+                            "x": 495.312,
                             "y": 149.891,
                             "name": "out-0",
                             "alignment": "right",
@@ -1346,7 +1353,7 @@
                         {
                             "id": "2b194acd-ce7d-41b0-ba3f-79e12be4f9ec",
                             "type": "default",
-                            "x": 495.313,
+                            "x": 495.312,
                             "y": 165.891,
                             "name": "parameter-out-any-likelihood_function",
                             "alignment": "right",
@@ -1374,7 +1381,7 @@
                 "3a650b02-15e0-4ead-86e1-d82976d33989": {
                     "id": "3a650b02-15e0-4ead-86e1-d82976d33989",
                     "type": "custom-node",
-                    "selected": true,
+                    "selected": false,
                     "extras": {
                         "type": "comment",
                         "commentInput": "This is a comment"

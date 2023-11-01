@@ -3,17 +3,18 @@ import os
 import sys
 import warnings
 from visual_bayesic import __version__
+import xai_components
 
 from sphinx_gallery.sorting import FileNameSortKey
 import numpy as np
 
-# External examples:
+sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('.'))
+
+# External examples:
 import make_external_gallery
 make_external_gallery.make_example_gallery()
 
-
-sys.path.insert(0, os.path.abspath('.'))
 
 # -- General configuration ------------------------------------------------
 
