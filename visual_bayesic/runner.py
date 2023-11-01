@@ -36,6 +36,6 @@ def display_graph(mod: ModuleType):
     img_path = os.path.join(module_dir, "graph.png")
     img = mpimg.imread(img_path)
 
-    plt.figure(figsize=(20, 10))
+    plt.figure(figsize=(23, 10))
     plt.imshow(img)
     plt.axis('off')  # Hide axes for better visualization

@@ -1,26 +1,17 @@
-.. _subsurface-manual:
+.. _visual-bayesic-manual:
 
-########################
-subsurface Documentation
-########################
+###########################
+Visual Bayesic Documentation
+###########################
 
 :Release: |version|
 :Date: |today|
-:Source: `github.com/softwareunderground/subsurface <https://github.com/softwareunderground/subsurface>`_
+:Source: `github.com/terranigma-solutions/visual-bayesic <https://github.com/terranigma-solutions/visual-bayesic>`_
 
 ----
 
-
 .. include:: ../../README.rst
   :start-after: sphinx-inclusion-marker
-
-
-Requirements
-------------
-
-The **only** requirement for ``subsurface`` is ``xarray`` (which, in turn,
-requires ``pandas`` and ``numpy``).
-
 
 .. toctree::
    :maxdepth: 2
@@ -44,5 +35,4 @@ requires ``pandas`` and ``numpy``).
    :maxdepth: 2
    :hidden:
    :caption: API Reference
-
 

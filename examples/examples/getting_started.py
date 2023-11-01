@@ -1,13 +1,12 @@
 """
-Getting Started
-==================================
+Getting Started with Visual Scripting in Bayesian Inference
+==========================================================
 
-This example demonstrates the usage of the `visual_bayesic` package for Bayesian Inference using visual scripting. 
-The "Getting Started" example is a simple example that showcases the ability of `visual_bayesic` to utilize visual
-scripting for defining and running Bayesian Inference. The graphical representation, combined with the Python script,
-offers a powerful way to work with Bayesian models, making the process more intuitive and user-friendly.
+`visual_bayesic` leverages the power of visual scripting to simplify and enhance the Bayesian inference process. 
+This "Getting Started" guide demonstrates how the combination of graphical representations and Python scripts can make 
+defining and running Bayesian models more intuitive and user-friendly.
 
-Let's dive into the execution.
+Let's dive in!
 """
 
 import os
@@ -21,28 +20,26 @@ if '__file__' in globals():
 else:
     base_path = os.getcwd()
 
-
-# Append the parent directory to sys.path
+# Adjust the Python module search path to include the parent directory
 sys.path.append(os.path.join(base_path, '..'))
 
 normal_likelihood = import_model("normal_likelihood")
 
 # %%
-# Below is the screenshot of the visual scripting graph that corresponds to the
-# Python code executed above. This graph provides an intuitive way to understand
-# the flow and connections of the different components used in the inference process.
+# The visual scripting graph below represents the Bayesian inference process. 
+# Each node corresponds to a step or component, and the connections depict the flow of data and dependencies. 
+# This graphical view provides an intuitive way to understand the structure and flow of the Bayesian model.
 
 display_graph(normal_likelihood)
 
 # %%
 
-# Call the function
+# Execute the model
 execute_model(normal_likelihood)
-
 
 # %%
 # Conclusion:
 # -----------
-# This example showcased the ability of `visual_bayesic`  to utilize visual scripting for defining and running
-# Bayesian Inference. The graphical representation, combined with the Python script, offers a powerful way to work with
-# Bayesian models, making the process more intuitive and user-friendly.
+# Through this example, we experienced the unique approach of `visual_bayesic` that harnesses the power of 
+# visual scripting to simplify Bayesian inference. This intuitive blend of graphics and code empowers users 
+# to effectively define, understand, and execute Bayesian models.

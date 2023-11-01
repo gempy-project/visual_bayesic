@@ -1,47 +1,43 @@
-.. image:: https://raw.githubusercontent.com/softwareunderground/subsurface/main/docs/source/_static/logos/subsurface.png
-   :target: https://softwareunderground.github.io/subsurface
-   :alt: subsurface logo
-
+.. image:: [Insert Visual Bayesic logo link here]
+   :target: [Link to Visual Bayesic's homepage or repository]
+   :alt: Visual Bayesic logo
 
 .. image:: https://img.shields.io/badge/python-3.8+-blue.svg
    :target: https://www.python.org/downloads/
    :alt: Supported Python Versions
+
 .. image:: https://img.shields.io/badge/platform-linux,win,osx-blue.svg
    :target: https://anaconda.org/conda-forge/emg3d/
-   :alt: Linux, Windows, OSX
-
+   :alt: Supported Platforms: Linux, Windows, OSX
 
 .. sphinx-inclusion-marker
-
 
 Visual Bayesic
 ==============
 
-Visual Bayesic is a Python package for Bayesian inversion of geophysical data.
+Welcome to Visual Bayesic, the forefront of Bayesian inversion through visual scripting! 
 
+If you are looking to harness the power of Bayesian inference, Visual Bayesic offers an intuitive graphical interface paired with robust Python functionalities, making the entire process seamless and user-friendly.
 
-Documentation (WIP)
--------------------
+Documentation (Work in Progress)
+--------------------------------
 
-Note that ``Visual Bayesic`` is still in early days; do expect things to change. 
+**Please Note:** ``Visual Bayesic`` is still in its development phase, and features are continuously evolving.
 
-An early version of the documentation can be found here:
+Explore our early documentation here:
+https://[Link to Visual Bayesic's documentation]
 
-https://softwareunderground.github.io/subsurface/
-
-Direct links:
-
-- `Developers-guide <https://softwareunderground.github.io/subsurface/maintenance.html>`_
-- `Changelog <https://softwareunderground.github.io/subsurface/changelog.html>`_
-
+Key resources:
+- `Developers Guide <[Link to Developer's Guide]>`_
+- `Changelog <[Link to Changelog]>`_
 
 Installation
 ------------
 
-.. code-block:: console
+It's easy to get started with Visual Bayesic:
 
+.. code-block:: console
     pip install visual-bayesic
 
-Be aware that to read different formats you will need to manually install the
-specific dependency (e.g. ``welly`` to read well data).
+**Tip:** To handle diverse formats, ensure you install the respective dependencies. For instance, use ``welly`` if you're working with well data.
 
