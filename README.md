@@ -1,16 +1,11 @@
-.. image:: [Insert Visual Bayesic logo link here]
-   :target: [Link to Visual Bayesic's homepage or repository]
-   :alt: Visual Bayesic logo
+# <p align="center"><img src="docs/readme_images/header_combined_slim.png" width="1000"></p>
 
-.. image:: https://img.shields.io/badge/python-3.8+-blue.svg
-   :target: https://www.python.org/downloads/
-   :alt: Supported Python Versions
+> Visual Bayesic: Visual Scripting for Bayesian Inference
 
-.. image:: https://img.shields.io/badge/platform-linux,win,osx-blue.svg
-   :target: https://anaconda.org/conda-forge/emg3d/
-   :alt: Supported Platforms: Linux, Windows, OSX
+[![PyPI](https://img.shields.io/badge/python-3-blue.svg)](https://www.python.org/downloads/)
+[![PyPI](https://img.shields.io/badge/pypi-1.0-blue.svg)](https://pypi.org/project/gempy/)
+[![license: EUPL v1.2](https://img.shields.io/badge/license-EUPL%20v1.2-blue.svg)](https://github.com/cgre-aachen/gempy/blob/master/LICENSE)
 
-.. sphinx-inclusion-marker
 
 Visual Bayesic
 ==============
@@ -27,16 +22,14 @@ Documentation (Work in Progress)
 Explore our early documentation here:
 
 Key resources:
-- `Developers Guide <[https://terranigma-solutions.github.io/visual-bayesic-xircuits/]>`_
-- `Changelog <[Link to Changelog]>`_
+- [Developers Guide](https://terranigma-solutions.github.io/visual-bayesic-xircuits/)
+
 
 Installation
 ------------
 
 It's easy to get started with Visual Bayesic:
 
-.. code-block:: console
-    pip install visual-bayesic
+`$ pip install visual-bayesic
 
-**Tip:** To handle diverse formats, ensure you install the respective dependencies. For instance, use ``welly`` if you're working with well data.
 
