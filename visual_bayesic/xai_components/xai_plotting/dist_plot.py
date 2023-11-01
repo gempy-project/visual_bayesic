@@ -1,4 +1,4 @@
-from xai_components.base import InArg, OutArg, Component, xai_component
+from visual_bayesic.xai_components.base import InArg, Component, xai_component
 import seaborn as sns
 import matplotlib.pyplot as plt
 

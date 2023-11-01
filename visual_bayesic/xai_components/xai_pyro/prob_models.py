@@ -1,4 +1,4 @@
-from xai_components.base import InArg, OutArg, Component, xai_component
+from visual_bayesic.xai_components.base import InArg, OutArg, Component, xai_component
 import pyro
 import pyro.distributions as dist
 from pyro.infer.mcmc import MCMC, NUTS
@@ -76,7 +76,7 @@ class RunMCMC(Component):
         mcmc.run(data)
         self.posterior_samples.value = mcmc.get_samples()["mu"].numpy().tolist()
 
-from xai_components.base import InArg, Component, xai_component
+from visual_bayesic.xai_components.base import InArg, Component, xai_component
 import matplotlib.pyplot as plt
 
 @xai_component

@@ -1,4 +1,4 @@
-from xai_components.base import InArg, OutArg, InCompArg, Component, BaseComponent, xai_component
+from visual_bayesic.xai_components.base import InArg, InCompArg, Component, BaseComponent, xai_component
 from typing import Union
 @xai_component(color="red")
 class HelloComponent(Component):

@@ -1,7 +1,7 @@
 import pyro
 from pyroapi import distributions
 
-from xai_components.base import InArg, OutArg, Component, xai_component
+from visual_bayesic.xai_components.base import InArg, OutArg, Component, xai_component
 
 
 @xai_component
