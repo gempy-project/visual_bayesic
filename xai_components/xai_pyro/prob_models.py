@@ -1,8 +1,19 @@
+from torch.distributions import constraints
+
 from xai_components.base import InArg, OutArg, Component, xai_component
 import pyro
 import pyro.distributions as dist
 from pyro.infer.mcmc import MCMC, NUTS
 import torch
+
+import matplotlib.image as mpimg
+from io import BytesIO
+
+
+# 
+# from pyro.contrib.graphviz import graphviz
+# from graphviz import Source
+# import pyro
 
 @xai_component
 class DefinePrior(Component):
@@ -17,9 +28,20 @@ class DefinePrior(Component):
 
     def execute(self, ctx) -> None:
         def prior():
-            return pyro.sample("mu", dist.Normal(self.mean.value, self.std.value))
+            mu = pyro.param(
+                name="mu",
+                init_tensor=torch.tensor(self.mean.value, dtype=torch.float32)
+            )
+            sigma = pyro.param(
+                name="sigma",
+                init_tensor=torch.tensor(self.std.value, dtype=torch.float32),
+                constraint=constraints.positive
+            )
+
+            return pyro.sample("x", dist.Normal(mu, sigma))
 
         self.prior_function.value = prior
+
 
 @xai_component
 class DefineLikelihood(Component):
@@ -40,6 +62,30 @@ class DefineLikelihood(Component):
         self.likelihood_function.value = likelihood
 
 
+@xai_component
+class VisualizeModelGraph(Component):
+    model_function: InArg[any]
+
+    def __init__(self):
+        self.model_function = InArg.empty()
+
+    def execute(self, ctx) -> None:
+        data = torch.ones(10)
+        png_path = "network.png"
+        dot = pyro.render_model(
+            model=self.model_function.value,
+            model_args=(data,),
+            render_params=True,
+            render_distributions=True,
+        )
+        # Render the Digraph object into memory as PNG
+        png_data = dot.pipe(format='png')
+
+        # Convert byte data to image
+        img = mpimg.imread(BytesIO(png_data), format='PNG')
+        plt.imshow(img)
+        plt.axis('off')  # Turn off axis
+        plt.show()
 
 
 @xai_component
@@ -74,10 +120,12 @@ class RunMCMC(Component):
         data = torch.tensor(self.data.value)
         mcmc = MCMC(self.kernel.value, num_samples=self.num_samples.value, warmup_steps=self.warmup_steps.value)
         mcmc.run(data)
-        self.posterior_samples.value = mcmc.get_samples()["mu"].numpy().tolist()
+        self.posterior_samples.value = mcmc.get_samples()["x"].numpy().tolist()
+
 
 from xai_components.base import InArg, Component, xai_component
 import matplotlib.pyplot as plt
+
 
 @xai_component
 class PlotPosterior(Component):
