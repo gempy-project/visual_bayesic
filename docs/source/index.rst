@@ -22,16 +22,6 @@ The **only** requirement for ``subsurface`` is ``xarray`` (which, in turn,
 requires ``pandas`` and ``numpy``).
 
 
-Optional requirements
----------------------
-
-There are many optional requirements, depending on the data format you want to
-read/write. Currently, the ``requierements_opt.txt`` reads like:
-
-.. include:: ../../requirements_opt.txt
-   :literal:
-
-
 .. toctree::
    :maxdepth: 2
    :hidden:
