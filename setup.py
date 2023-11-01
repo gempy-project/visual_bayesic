@@ -12,7 +12,7 @@ if not sys.version_info[:2] >= (3, 8):
 
 this_directory = path.abspath(path.dirname(__file__))
 
-readme = path.join(this_directory, "README.rst")
+readme = path.join(this_directory, "README.md")
 with open(readme, "r", encoding="utf-8") as f:
     long_description = f.read()
 long_description = long_description.split('inclusion-marker')[-1]

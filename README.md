@@ -25,10 +25,9 @@ Documentation (Work in Progress)
 **Please Note:** ``Visual Bayesic`` is still in its development phase, and features are continuously evolving.
 
 Explore our early documentation here:
-https://[Link to Visual Bayesic's documentation]
 
 Key resources:
-- `Developers Guide <[Link to Developer's Guide]>`_
+- `Developers Guide <[https://terranigma-solutions.github.io/visual-bayesic-xircuits/]>`_
 - `Changelog <[Link to Changelog]>`_
 
 Installation
