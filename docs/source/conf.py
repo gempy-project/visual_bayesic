@@ -5,7 +5,6 @@ import warnings
 from visual_bayesic import __version__
 
 from sphinx_gallery.sorting import FileNameSortKey
-import pyvista
 import numpy as np
 
 # External examples:
@@ -13,22 +12,6 @@ sys.path.insert(0, os.path.abspath('.'))
 import make_external_gallery
 make_external_gallery.make_example_gallery()
 
-
-# -- PyVista settings -----------------------------------------------------
-
-pyvista.set_error_output_file('errors.txt')
-# Ensure that offscreen rendering is used for docs generation
-pyvista.OFF_SCREEN = True  # Not necessary - simply an insurance policy
-pyvista.BUILDING_GALLERY = True
-# Preferred plotting style for documentation
-pyvista.set_plot_theme('document')
-pyvista.rcParams['window_size'] = np.array([1024, 768]) * 2
-
-# Save figures in specified directory
-pyvista.FIGURE_PATH = os.path.join(os.path.abspath('./images/'), 'auto-generated/')
-
-if not os.path.exists(pyvista.FIGURE_PATH):
-    os.makedirs(pyvista.FIGURE_PATH)
 
 sys.path.insert(0, os.path.abspath('.'))
 
@@ -46,7 +29,6 @@ extensions = [
     'sphinx_gallery.gen_gallery',
     'sphinx_automodapi.automodapi',
     'sphinx_automodapi.smart_resolver',
-    "pyvista.ext.plot_directive"
 ]
 
 linkcheck_retries = 3
@@ -116,15 +98,12 @@ sphinx_gallery_conf = {
     "backreferences_dir": 'gen_modules/backreferences',
     # Modules for which function level galleries are created.  In
     "doc_module": ('subsurface', 'numpy', 'pandas'),
-    "image_scrapers": ('pyvista', 'matplotlib'),
-    'first_notebook_cell': ("%matplotlib inline\n"
-                            "from pyvista import set_plot_theme\n"
-                            "set_plot_theme('document')"),
+    "image_scrapers": ('matplotlib'),
+    'first_notebook_cell': ("%matplotlib inline"),
     'reference_url': {
         # The module you locally document uses None
         'subsurface': None,
         'numpy': 'https://numpy.org/doc/stable/'
-
     },
 }
 
