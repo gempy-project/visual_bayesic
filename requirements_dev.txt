@@ -1,8 +1,0 @@
-pytest
-
-sphinx 
-sphinx-gallery
-sphix_automodapi
-sphinx_rtd_theme
-
-Pillow

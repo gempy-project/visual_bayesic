@@ -1,3 +1,0 @@
-.
-tensorflow
-tensorflow_probability
