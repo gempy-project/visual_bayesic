@@ -30,6 +30,6 @@ Installation
 
 It's easy to get started with Visual Bayesic:
 
-`$ pip install visual-bayesic
+`$ pip install visual-bayesic`
 
 
