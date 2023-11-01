@@ -5,12 +5,38 @@ import sys
 from pathlib import Path
 import time
 
+from xai_components.base import InArg, OutArg, Component, xai_component
+from PIL import ImageGrab
+
+
+@xai_component
+class CaptureScreenshot(Component):
+    """Capture a full screenshot.
+
+    ##### inPorts:
+    - filename: The name of the file to save the screenshot. Default: "graph.png".
+
+    """
+    filename: InArg[str]
+    
+    def __int__(self):
+        super().__init__()
+        self.filename.value = "graph.png"
+
+    def execute(self, ctx) -> None:
+        screenshot = ImageGrab.grab()
+        if self.filename.value is None:
+            self.filename.value = "graph.png"
+        screenshot.save(self.filename.value)
+
+
 @xai_component
 class Print(Component):
     msg: InArg[any]
     
     def execute(self, ctx) -> None:
         print(str(self.msg.value))
+        
         
 @xai_component
 class ConcatString(Component):
