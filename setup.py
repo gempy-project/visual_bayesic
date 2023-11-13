@@ -27,7 +27,7 @@ CLASSIFIERS = [
 
 setup(
     name="visual_bayesic",
-    packages=find_packages(exclude=("tests", "docs", "examples")),
+    packages=find_packages(exclude=("tests", "docs", "2-examples")),
     description="Description for visual_bayesic",  # You can update this description
     long_description=long_description,
     long_description_content_type="text/markdown",

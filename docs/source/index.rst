@@ -38,3 +38,6 @@ If you are looking to harness the power of Bayesian inference, Visual Bayesic of
    :maxdepth: 2
    :caption: API Reference
 
+.. include:: examples/index.rst
+
+.. include:: external/external_examples.rst  

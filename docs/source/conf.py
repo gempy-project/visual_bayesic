@@ -23,7 +23,7 @@ from visual_bayesic import __version__
 from sphinx_gallery.sorting import FileNameSortKey
 import numpy as np
 
-# External examples:
+# External 2-examples:
 import make_external_gallery
 make_external_gallery.make_example_gallery()
 
@@ -93,7 +93,6 @@ todo_include_todos = True
 
 # -- Sphinx Gallery Options
 
-root_examples_dir = "../../examples/examples/"
 
 sphinx_gallery_conf = {
     # path to your examples scripts

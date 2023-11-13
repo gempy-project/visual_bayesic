@@ -1,7 +1,7 @@
 """
 Modified after https://github.com/pyvista/pyvista/blob/ab70c26edbcfb107286c827bd4914562056219fb/docs/make_external_gallery.py
 
-A helper script to generate the external examples gallery.
+A helper script to generate the external 2-examples gallery.
 """
 import os
 from io import StringIO
@@ -67,14 +67,12 @@ def make_example_gallery():
 
 External Examples
 =================
-External Examples
-=================
 
-Here are a list of longer, more technical examples showcasing the capabilities of Visual Bayesic for visual scripting in Bayesian Inference.
+Here are a list of longer, more technical 2-examples showcasing the capabilities of Visual Bayesic for visual scripting in Bayesian Inference.
 
 .. caution::
 
-    Please note that these examples link to external websites. If any of these
+    Please note that these 2-examples link to external websites. If any of these
     links are broken, please raise an `issue
     <https://github.com/visual-bayesic/visual-bayesic/issues>`_.
 
