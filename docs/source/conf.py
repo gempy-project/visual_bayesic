@@ -1,18 +1,30 @@
 import time
 import os
 import sys
+
+sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('.'))
+
+# Find the site-packages directory
+site_packages_path = next(p for p in sys.path if 'site-packages' in p)
+
+# Remove the site-packages path
+sys.path.remove(site_packages_path)
+
+# Add your project root to the sys.path
+sys.path.insert(0, os.path.abspath('..'))
+
+# Optionally, re-add site-packages at the end of sys.path
+sys.path.append(site_packages_path)
+
 import warnings
 from visual_bayesic import __version__
 
 from sphinx_gallery.sorting import FileNameSortKey
 import numpy as np
 
-sys.path.insert(0, os.path.abspath('..'))
-sys.path.insert(0, os.path.abspath('.'))
-
 # External examples:
 import make_external_gallery
-
 make_external_gallery.make_example_gallery()
 
 # -- General configuration ------------------------------------------------
@@ -48,7 +60,7 @@ intersphinx_mapping = {
 
 napoleon_google_docstring = True
 
-description = 'DataHub for geoscientific data in Python.'
+description = 'Visual Scripting for Probabilistic Network data in Python.'
 
 # The templates path.
 templates_path = ['_templates']
@@ -120,14 +132,14 @@ linkcheck_request_header = {
 }
 
 # -- Options for HTML output ----------------------------------------------
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'alabaster'
 html_theme_options = {
     'logo_only': True,
     'display_version': True,
     'prev_next_buttons_location': 'both',
 }
 html_static_path = ['_static']
-html_logo = '_static/logos/subsurface.png'
+html_logo = '_static/logos/logo-black.svg'
 html_favicon = '_static/logos/favicon.ico'
 html_sidebars = {
     '**': [

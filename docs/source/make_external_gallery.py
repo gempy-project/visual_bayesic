@@ -51,6 +51,18 @@ class Example():
 ###############################################################################
 
 articles = dict(
+    gempy_well=Example(
+        title="GemPy - Subsurface Link",
+        description="Build a model from Subsurface object and export result back to subsurface",
+        link="https://docs.gempy.org/integrations/gempy_subsurface.html#sphx-glr-integrations-gempy-subsurface-py",
+        image="https://docs.gempy.org/_images/sphx_glr_gempy_subsurface_002.png",
+    ),
+    segysag=Example(
+        title="Using segysak with subsurface",
+        description="Loading a segy cube into `subsurface.StructuredData`.",
+        link="https://segysak.readthedocs.io/en/latest/examples/example_subsurface.html",
+        image="https://raw.githubusercontent.com/trhallam/segysak/main/docs/_static/logo_small.png",
+    ),
 )
 
 
