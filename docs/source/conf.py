@@ -135,10 +135,16 @@ linkcheck_request_header = {
 # -- Options for HTML output ----------------------------------------------
 html_theme = 'alabaster'
 html_theme_options = {
-    'logo_only': True,
-    'display_version': True,
+    'github_user'     : 'terranigma-solutions',
+    'github_repo'     : 'visual-bayesic',
+    'github_type'     : 'star',
+    'logo_name'       : False,
+    'travis_button'   : False,
+    'show_related'    : True,
+    'sidebar_collapse': True,
     'prev_next_buttons_location': 'both',
 }
+
 html_static_path = ['_static']
 html_logo = '_static/logos/logo-black.svg'
 html_favicon = '_static/logos/favicon.ico'

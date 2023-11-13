@@ -1,4 +1,4 @@
-# <p align="center"><img src="docs/readme_images/header_combined_slim.png" width="1000"></p>
+# <p align="center"><img src="docs/source/_static/logos/logo-black.svg" width="1000"></p>
 
 > Visual Bayesic: Visual Scripting for Bayesian Inference
 

@@ -1,8 +1,8 @@
 .. _visual-bayesic-manual:
 
-###########################
+############################
 Visual Bayesic Documentation
-###########################
+############################
 
 :Release: |version|
 :Date: |today|
@@ -10,22 +10,25 @@ Visual Bayesic Documentation
 
 ----
 
-.. include:: ../../README.rst
+.. include:: ../../README.md
   :start-after: sphinx-inclusion-marker
+
+Visual Bayesic
+==============
+
+Welcome to Visual Bayesic, the forefront of Bayesian inversion through visual scripting!
+
+If you are looking to harness the power of Bayesian inference, Visual Bayesic offers an intuitive graphical interface paired with robust Python functionalities, making the entire process seamless and user-friendly.
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
    :caption: User Guide
 
-   manual
-   changelog
    contributing
    maintenance
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
    :caption: Galleries
 
    examples/index
@@ -33,6 +36,5 @@ Visual Bayesic Documentation
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
    :caption: API Reference
 
