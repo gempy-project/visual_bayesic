@@ -38,8 +38,8 @@ display_graph(normal_likelihood)
 execute_model(normal_likelihood)
 
 # %%
-# Conclusion:
-# -----------
+# Conclusion
+# ----------
 # Through this example, we experienced the unique approach of `visual_bayesic` that harnesses the power of 
 # visual scripting to simplify Bayesian inference. This intuitive blend of graphics and code empowers users 
 # to effectively define, understand, and execute Bayesian models.

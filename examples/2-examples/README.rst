@@ -1,4 +1,4 @@
 Examples
 --------
 
-These are exmaples of how to use the library.
+These are examples of how to use the library.

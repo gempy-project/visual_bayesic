@@ -68,7 +68,7 @@ def make_example_gallery():
 External Examples
 =================
 
-Here are a list of longer, more technical 2-examples showcasing the capabilities of Visual Bayesic for visual scripting in Bayesian Inference.
+Got an impressive Bayesian inference workflow or visualization routine? Share it with the community! Contribute your work and help others learn from your expertise. Submit a PR at `visual-bayesic/visual-bayesic <https://github.com/visual-bayesic/visual-bayesic/>`_, and we'd be excited to feature it.
 
 .. caution::
 
