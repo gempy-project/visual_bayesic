@@ -138,6 +138,7 @@ html_theme_options = {
     'github_repo'     : 'visual-bayesic',
     'github_type'     : 'star',
     'logo_name'       : False,
+    'logo'            : 'logos/logo-black.svg',
     'travis_button'   : False,
     'show_related'    : True,
     'sidebar_collapse': True,
@@ -145,7 +146,6 @@ html_theme_options = {
 }
 
 html_static_path = ['_static']
-html_logo = '_static/logos/logo-black.svg'
 html_favicon = '_static/logos/favicon.ico'
 html_sidebars = {
     '**': [
