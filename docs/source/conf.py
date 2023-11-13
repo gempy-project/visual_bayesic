@@ -39,6 +39,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
     'sphinx_gallery.gen_gallery',
+    "sphinx_design",
     'sphinx_automodapi.automodapi',
     'sphinx_automodapi.smart_resolver',
 ]
