@@ -34,18 +34,24 @@ class Example():
 ###############################################################################
 
 articles = dict(
-    gempy_well=Example(
-        title="GemPy - Subsurface Link",
-        description="Build a model from Subsurface object and export result back to subsurface",
-        link="https://docs.gempy.org/integrations/gempy_subsurface.html#sphx-glr-integrations-gempy-subsurface-py",
-        image="https://docs.gempy.org/_images/sphx_glr_gempy_subsurface_002.png",
+    advanced_bayes=Example(
+        title="More advanced example",
+        description="Multiple Priors and likelihoods",
+        link="https://gempy-project.github.io/gempy_probability/examples_basic_geology/1-thickness_problem.html#sphx-glr-examples-basic-geology-1-thickness-problem-py",
+        image="https://gempy-project.github.io/gempy_probability/_images/sphx_glr_1-thickness_problem_005.png",
     ),
-    segysag=Example(
-        title="Using segysak with subsurface",
-        description="Loading a segy cube into `subsurface.StructuredData`.",
-        link="https://segysak.readthedocs.io/en/latest/examples/example_subsurface.html",
-        image="https://raw.githubusercontent.com/trhallam/segysak/main/docs/_static/logo_small.png",
+    simple_bayes=Example(
+        title="Simple example",
+        description="Build a basic Bayesian model with Pyro",
+        link="https://gempy-project.github.io/gempy_probability/examples_first_example_of_inference/1-bayesian_basics/1.1_Intro_to_Bayesian_Inference.html#sphx-glr-examples-first-example-of-inference-1-bayesian-basics-1-1-intro-to-bayesian-inference-py",
+        image="https://gempy-project.github.io/gempy_probability/_images/sphx_glr_1.1_Intro_to_Bayesian_Inference_004.png",
     ),
+    theory=Example(
+        title="Bayesian Inference Theory",
+        description="A brief introduction to Bayesian inference theory.",
+        link="https://gempy-project.github.io/gempy_probability/examples_intro/index.html",
+        image="https://gempy-project.github.io/gempy_probability/_images/Model_space2.png",
+    )
 )
 
 
@@ -61,21 +67,18 @@ def make_example_gallery():
 
 External Examples
 =================
+External Examples
+=================
 
-Here are a list of longer, more technical examples of what PyVista can do.
+Here are a list of longer, more technical examples showcasing the capabilities of Visual Bayesic for visual scripting in Bayesian Inference.
 
 .. caution::
 
     Please note that these examples link to external websites. If any of these
     links are broken, please raise an `issue
-    <https://github.com/pyvista/pyvista/issues>`_.
+    <https://github.com/visual-bayesic/visual-bayesic/issues>`_.
 
-
-Do you have a technical processing workflow or visualization routine you would
-like to share? If so, please consider sharing your work here submitting a PR
-at `pyvista/pyvista <https://github.com/pyvista/pyvista/>`_ and we would be
-glad to add it.
-
+Do you have a sophisticated Bayesian inference workflow or visualization routine you would like to share? If so, please consider contributing your work by submitting a PR at `visual-bayesic/visual-bayesic <https://github.com/visual-bayesic/visual-bayesic/>`_. We welcome contributions and would be delighted to include your work in our collection.
 
 .. grid:: 3
    :gutter: 1
