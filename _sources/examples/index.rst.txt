@@ -1,9 +1,9 @@
 :orphan:
 
-Examples II
-===========
+Gallery
+=======
 
-These are exmaples of how to use the library.
+Experience Visual Bayesic in action. Explore our galleries to see practical examples, detailed tutorials, and more. Get inspired and learn new techniques.
 
 
 
@@ -16,10 +16,12 @@ These are exmaples of how to use the library.
 
     </div>
 
-Examples
-========
+Tutorials
+---------
 
-These are exmaples of how to use the library.
+Here you will find a selection of examples showing what can you do and how
+you can do it. 
+
 
 
 
@@ -34,10 +36,10 @@ These are exmaples of how to use the library.
 
 .. only:: html
 
-  .. image:: /examples/examples/images/thumb/sphx_glr_getting_started_thumb.png
+  .. image:: /examples/1-tutorials/images/thumb/sphx_glr_getting_started_thumb.png
     :alt:
 
-  :ref:`sphx_glr_examples_examples_getting_started.py`
+  :ref:`sphx_glr_examples_1-tutorials_getting_started.py`
 
 .. raw:: html
 
@@ -49,12 +51,10 @@ These are exmaples of how to use the library.
 
     </div>
 
-GemPy Tutorials
-===============
+Examples
+--------
 
-Here you will find a selection of examples showing what can you do and how
-you can do it in GemPy
-
+These are examples of how to use the library.
 
 
 
@@ -73,8 +73,8 @@ you can do it in GemPy
    :includehidden:
 
 
-   /examples/examples/index.rst
-   /examples/tutorials/index.rst
+   /examples/1-tutorials/index.rst
+   /examples/2-examples/index.rst
 
 
 
