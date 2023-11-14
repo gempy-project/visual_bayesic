@@ -1,0 +1,45 @@
+
+
+.. _sphx_glr_examples_1-tutorials:
+
+Tutorials
+---------
+
+Here you will find a selection of examples showing what can you do and how
+you can do it. 
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="visual_bayesic leverages the power of visual scripting to simplify and enhance the Bayesian inf...">
+
+.. only:: html
+
+  .. image:: /examples/1-tutorials/images/thumb/sphx_glr_getting_started_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_1-tutorials_getting_started.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Getting Started with Visual Scripting in Bayesian Inference</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/1-tutorials/getting_started
+

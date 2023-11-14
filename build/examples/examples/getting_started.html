@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Getting Started with Visual Scripting in Bayesian Inference &#8212; Visual Bayesic 0.1.dev19+gc3d2b81.d20231101 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=4a90727b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=f2a985cd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <script src="../../_static/documentation_options.js?v=0e9b3a5d"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-examples-getting-started-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="getting-started-with-visual-scripting-in-bayesian-inference">
+<span id="sphx-glr-examples-examples-getting-started-py"></span><h1>Getting Started with Visual Scripting in Bayesian Inference<a class="headerlink" href="#getting-started-with-visual-scripting-in-bayesian-inference" title="Link to this heading">¶</a></h1>
+<p><cite>visual_bayesic</cite> leverages the power of visual scripting to simplify and enhance the Bayesian inference process.
+This “Getting Started” guide demonstrates how the combination of graphical representations and Python scripts can make
+defining and running Bayesian models more intuitive and user-friendly.</p>
+<p>Let’s dive in!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">visual_bayesic.runner</span> <span class="kn">import</span> <span class="n">display_graph</span><span class="p">,</span> <span class="n">execute_model</span><span class="p">,</span> <span class="n">import_model</span>
+
+<span class="c1"># Determine the base path</span>
+<span class="k">if</span> <span class="s1">&#39;__file__&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="n">base_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">base_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+<span class="c1"># Adjust the Python module search path to include the parent directory</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">))</span>
+
+<span class="n">normal_likelihood</span> <span class="o">=</span> <span class="n">import_model</span><span class="p">(</span><span class="s2">&quot;normal_likelihood&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The visual scripting graph below represents the Bayesian inference process.
+Each node corresponds to a step or component, and the connections depict the flow of data and dependencies.
+This graphical view provides an intuitive way to understand the structure and flow of the Bayesian model.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display_graph</span><span class="p">(</span><span class="n">normal_likelihood</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_getting_started_001.png" srcset="../../_images/sphx_glr_getting_started_001.png" alt="getting started" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Execute the model</span>
+<span class="n">execute_model</span><span class="p">(</span><span class="n">normal_likelihood</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_getting_started_002.png" srcset="../../_images/sphx_glr_getting_started_002.png" alt="Posterior distribution of mu" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Executing: DefinePrior
+
+Executing: DefineLikelihood
+
+Executing: VisualizeModelGraph
+
+Executing: NUTSKernel
+
+Executing: RunMCMC
+
+Warmup:   0%|                                                                                           | 0/600 [00:00, ?it/s]
+Warmup:  10%|████▎                                     | 62/600 [00:00, 617.70it/s, step size=3.08e+00, acc. prob=0.781]
+Sample:  21%|████████▍                                | 124/600 [00:00, 529.17it/s, step size=7.68e-01, acc. prob=0.952]
+Sample:  30%|████████████▎                            | 181/600 [00:00, 539.53it/s, step size=7.68e-01, acc. prob=0.962]
+Sample:  40%|████████████████▎                        | 239/600 [00:00, 550.80it/s, step size=7.68e-01, acc. prob=0.965]
+Sample:  50%|████████████████████▎                    | 297/600 [00:00, 556.89it/s, step size=7.68e-01, acc. prob=0.968]
+Sample:  60%|████████████████████████▋                | 361/600 [00:00, 577.58it/s, step size=7.68e-01, acc. prob=0.968]
+Sample:  70%|████████████████████████████▋            | 419/600 [00:00, 558.95it/s, step size=7.68e-01, acc. prob=0.968]
+Sample:  80%|████████████████████████████████▋        | 479/600 [00:00, 571.24it/s, step size=7.68e-01, acc. prob=0.967]
+Sample:  90%|████████████████████████████████████▋    | 537/600 [00:00, 566.68it/s, step size=7.68e-01, acc. prob=0.967]
+Sample: 100%|████████████████████████████████████████▊| 598/600 [00:01, 579.28it/s, step size=7.68e-01, acc. prob=0.967]
+Sample: 100%|█████████████████████████████████████████| 600/600 [00:01, 567.56it/s, step size=7.68e-01, acc. prob=0.967]
+
+
+Executing: CaptureScreenshot
+
+Executing: PlotPosterior
+</pre></div>
+</div>
+<section id="conclusion">
+<h2>Conclusion:<a class="headerlink" href="#conclusion" title="Link to this heading">¶</a></h2>
+<p>Through this example, we experienced the unique approach of <cite>visual_bayesic</cite> that harnesses the power of
+visual scripting to simplify Bayesian inference. This intuitive blend of graphics and code empowers users
+to effectively define, understand, and execute Bayesian models.</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.370 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-examples-getting-started-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/423f25251e014f64711d91190a8c74f7/getting_started.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">getting_started.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/e7c5c95824f83fdbae1dc2cb57b2fdac/getting_started.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">getting_started.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/logos/logo-black.svg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=terranigma-solutions&repo=visual-bayesic&type=star&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance.html">Maintenance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Galleries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../external/external_examples.html">External Examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1-tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-examples/index.html">Examples</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023-2023, Miguel de la Varga and Maximilian Hallenberger.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../../_sources/examples/examples/getting_started.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
