@@ -23,3 +23,18 @@ class Normal(Component):
 
     def execute(self, ctx) -> None:
         self.fn.value = dist.Normal(self.mean.value, self.std.value)
+
+
+@xai_component
+class Uniform(Component):
+    low: InArg[float]
+    high: InArg[float]
+    fn: OutArg[any]
+
+    def __init__(self):
+        self.low = InArg.empty()
+        self.high = InArg.empty()
+        self.fn = OutArg.empty()
+
+    def execute(self, ctx) -> None:
+        self.fn.value = dist.Uniform(self.low.value, self.high.value)
