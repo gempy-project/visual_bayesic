@@ -2,7 +2,7 @@ pytest
 
 sphinx 
 sphinx-gallery
-sphix_automodapi
+sphinx_automodapi
 sphinx_rtd_theme
 sphinx_design
 
