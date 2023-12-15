@@ -10,11 +10,6 @@ import matplotlib.image as mpimg
 from io import BytesIO
 
 
-# 
-# from pyro.contrib.graphviz import graphviz
-# from graphviz import Source
-# import pyro
-
 @xai_component
 class DefinePrior(Component):
     mean: InArg[float]
@@ -40,7 +35,7 @@ class DefinePrior(Component):
 
             return pyro.sample("x", dist.Normal(mu, sigma))
 
-        self.prior_function.value = prior
+        self.prior_function.value = prior()
 
 
 @xai_component
@@ -56,7 +51,7 @@ class DefineLikelihood(Component):
 
     def execute(self, ctx) -> None:
         def likelihood(data):
-            mu = self.mean.value()
+            mu = self.mean.value
             return pyro.sample("obs", dist.Normal(mu, self.std.value), obs=data)
 
         self.likelihood_function.value = likelihood
