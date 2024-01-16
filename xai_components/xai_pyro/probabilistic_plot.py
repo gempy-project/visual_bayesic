@@ -22,5 +22,15 @@ class PlotTrace(Component):
     plot: OutArg[any]
     
     def execute(self, ctx) -> None:
+        self.plot.value = az.plot_trace(self.az_data.value)
+        plt.show()
+
+
+@xai_component
+class PlotPrior(Component):
+    az_data: InArg[az.InferenceData]
+    plot: OutArg[any]
+
+    def execute(self, ctx) -> None:
         self.plot.value = az.plot_trace(self.az_data.value.prior)
         plt.show()

@@ -29,16 +29,17 @@ class Sample(Component):
 
 @xai_component()
 class PyroModel(Component):
-    fns: InArg[list[callable]]
+    # TODO: Here we need to have multiple models
+    arg1: InArg[callable]
     model: OutArg[callable]
 
     def __init__(self):
-        self.fns = InArg.empty()
+        self.arg1 = InArg.empty()
         self.model = OutArg.empty()
 
     def execute(self, ctx) -> None:
-        def model(fn):
-            fn()
+        def model():
+            self.arg1.value()
 
         self.model.value = model
 
@@ -56,12 +57,12 @@ class PriorPredictive(Component):  # ? Is this only for priors?
         self.prior = OutArg.empty()
 
     def execute(self, ctx) -> None:
-        def model(samples):
-            fo = samples()
-            
+        # def model(samples):
+        #     fo = samples()
+        model = self.fn.value    
         predictive = pyro.infer.Predictive(model, num_samples=self.num_samples.value)
         prior_predictive = predictive(
-            self.args.value
+            # self.args.value
         )
         func_of_the_model = self.fn.value
         self.prior.value = prior_predictive
