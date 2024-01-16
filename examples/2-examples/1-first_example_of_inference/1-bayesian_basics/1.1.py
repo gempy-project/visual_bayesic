@@ -1,8 +1,7 @@
 from argparse import ArgumentParser
-from xai_components.base import SubGraphExecutor
-from xai_components.xai_pyro.probabilistic_distributions import Normal
+from xai_components.xai_probability_distributions.probabilistic_distributions import Normal
 from xai_components.xai_pyro.probabilistic_node import PyroModel, Sample, PriorPredictive
-from xai_components.xai_pyro.probabilistic_plot import PlotPrior, ArvizObject
+from xai_components.xai_plotting.probabilistic_plot import PlotPrior, ArvizObject
 
 def main(args):
     ctx = {}

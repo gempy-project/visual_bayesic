@@ -4,6 +4,7 @@ from pyroapi import distributions
 from xai_components.base import InArg, OutArg, Component, xai_component
 
 
+
 @xai_component
 class NormalDistributionPyro(Component):
     loc: InArg[float]

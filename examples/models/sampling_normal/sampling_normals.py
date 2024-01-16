@@ -1,7 +1,6 @@
 from argparse import ArgumentParser
-from xai_components.base import SubGraphExecutor
 from xai_components.xai_plotting.dist_plot import VisualizeNormalDistribution
-from xai_components.xai_pyro.normal_distribution_pyro import NormalDistributionPyro
+from xai_components.xai_obsolete.normal_distribution_pyro import NormalDistributionPyro
 
 def main(args):
     ctx = {}

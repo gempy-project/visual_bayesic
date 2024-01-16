@@ -27,21 +27,6 @@ class Sample(Component):
         self.sample.value = sample_wrapper
 
 
-@xai_component()
-class PyroModel(Component):
-    # TODO: Here we need to have multiple models
-    arg1: InArg[callable]
-    model: OutArg[callable]
-
-    def __init__(self):
-        self.arg1 = InArg.empty()
-        self.model = OutArg.empty()
-
-    def execute(self, ctx) -> None:
-        def model():
-            self.arg1.value()
-
-        self.model.value = model
 
 
 @xai_component

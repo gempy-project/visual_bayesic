@@ -1,7 +1,6 @@
 from argparse import ArgumentParser
-from xai_components.base import SubGraphExecutor
-from xai_components.xai_pyro.prob_models import DefinePrior
-from xai_components.xai_pyro.probabilistic_distributions import Normal
+from xai_components.xai_obsolete.prob_models import DefinePrior
+from xai_components.xai_probability_distributions.probabilistic_distributions import Normal
 from xai_components.xai_pyro.probabilistic_node import PriorPredictive, Sample
 
 def main(args):

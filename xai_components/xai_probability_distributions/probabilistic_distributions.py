@@ -47,4 +47,13 @@ class Uniform(Component):
         self.fn = OutArg.empty()
 
     def execute(self, ctx) -> None:
-        self.fn.value = dist.Uniform(self.low.value, self.high.value)
+        def uniform_wrapper():
+            low_value = self.low.value
+            # analyze if it is a scalar or a function. If it is a function, then we need to execute it
+            if callable(low_value):
+                low_value = low_value()
+            
+            high_value = self.high.value
+            return dist.Uniform(low_value, high_value)
+        
+        self.fn.value = uniform_wrapper
