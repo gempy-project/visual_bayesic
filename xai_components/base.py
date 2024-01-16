@@ -1,5 +1,6 @@
 from argparse import Namespace
-from typing import TypeVar, Generic, Tuple
+from typing import TypeVar, Generic, Tuple, List
+from typing_extensions import NamedTuple
 
 T = TypeVar('T')
 
@@ -25,6 +26,7 @@ class OutArg(Generic[T]):
     def empty(cls):
         return OutArg(None)
 
+
 class InCompArg(Generic[T]):
     value: T
 
@@ -46,7 +48,9 @@ def xai_component(*args, **kwargs):
         # @xai_components(...) form
         def passthrough(f):
             return f
+
         return passthrough
+
 
 class ExecutionContext:
     args: Namespace
@@ -94,13 +98,13 @@ class Component(BaseComponent):
 
 
 class SubGraphExecutor:
-    
+
     def __init__(self, component):
         self.comp = component
-        
+
     def do(self, ctx):
         comp = self.comp
-        
+
         while comp is not None:
             comp = comp.do(ctx)
         return None
@@ -122,7 +126,7 @@ def execute_graph(args: Namespace, start: BaseComponent, ctx) -> None:
         next_component = start.do(ctx)
         while next_component:
             next_component = next_component.do(ctx)
-            
+
 
 class secret:
 
@@ -131,3 +135,23 @@ class secret:
 
     def get_value(self):
         return self.__value
+
+
+class message(NamedTuple):
+    role: str
+    content: str
+
+class chat(NamedTuple):
+    messages: List[message]
+
+class dynalist:
+    def __init__(self, value):
+        self.value = value
+
+class dynatuple:
+    def __init__(self, value):
+        self.value = value
+
+class dynadict:
+    def __init__(self, value):
+        self.value = value

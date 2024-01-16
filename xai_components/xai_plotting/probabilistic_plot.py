@@ -34,3 +34,32 @@ class PlotPrior(Component):
     def execute(self, ctx) -> None:
         self.plot.value = az.plot_trace(self.az_data.value.prior)
         plt.show()
+
+
+@xai_component
+class PlotLikelihood(Component):
+    az_data: InArg[az.InferenceData]
+    plot: OutArg[any]
+
+    def execute(self, ctx) -> None:
+        # TODO
+        plt.show()
+
+@xai_component
+class PlotJoy(Component):
+    az_data: InArg[az.InferenceData]
+    plot: OutArg[any]
+
+    def execute(self, ctx) -> None:
+        # TODO
+        plt.show()
+
+
+@xai_component
+class PlotMarginals(Component):
+    az_data: InArg[az.InferenceData]
+    plot: OutArg[any]
+
+    def execute(self, ctx) -> None:
+        # TODO
+        plt.show()
