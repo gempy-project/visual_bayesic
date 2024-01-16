@@ -22,7 +22,17 @@ class Normal(Component):
         self.fn = OutArg.empty()
 
     def execute(self, ctx) -> None:
-        self.fn.value = dist.Normal(self.mean.value, self.std.value)
+        
+        def normal_wrapper():
+            mean_value = self.mean.value
+            # analyze if it is a scalar or a function. If it is a function, then we need to execute it
+            if callable(mean_value):
+                mean_value = mean_value()
+            
+            std_value = self.std.value
+            return dist.Normal(mean_value, std_value)
+        
+        self.fn.value = normal_wrapper
 
 
 @xai_component
