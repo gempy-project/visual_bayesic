@@ -1,6 +1,8 @@
 import arviz as az
 import pyro
 from matplotlib import pyplot as plt
+from matplotlib.ticker import StrMethodFormatter
+
 from xai_components.base import InArg, Component, xai_component, OutArg
 
 
@@ -51,30 +53,90 @@ class PlotPrior(Component):
 
 
 @xai_component
-class PlotLikelihood(Component):
+class PlotNormalLikelihood(Component):
     az_data: InArg[az.InferenceData]
+    mean_sample_name: InArg[str]
+    std_sample_name: InArg[str]
+    y_sample_name: InArg[str]
     plot: OutArg[any]
 
     def execute(self, ctx) -> None:
-        # TODO
+        try:
+            from gempy_probability.plot_posterior import PlotPosterior
+        except ImportError:
+            print("You need to install gempy_probability to use this component.")
+            return
+            
+        p = PlotPosterior(self.az_data.value)
+        p.create_figure(figsize=(9, 3), joyplot=False, marginal=False)
+        p.plot_normal_likelihood(
+            mean=self.mean_sample_name.value,
+            std=self.std_sample_name.value,
+            obs=self.y_sample_name.value,
+            iteration=-1,
+        )
+        
+        # p.likelihood_axes.set_xlim(1.70, 2.40)
+        p.likelihood_axes.xaxis.set_major_formatter(StrMethodFormatter('{x:,.2f}'))
+        for tick in p.likelihood_axes.get_xticklabels():
+            tick.set_rotation(45)
         plt.show()
 
 
 @xai_component
-class PlotJoy(Component):
+class PlotNormalLikelihoodJoy(Component):
     az_data: InArg[az.InferenceData]
+    mean_sample_name: InArg[str]
+    std_sample_name: InArg[str]
+    y_sample_name: InArg[str]
+    n_samples: InArg[int]
     plot: OutArg[any]
 
+    def __init__(self):
+        super().__init__()
+        self.n_samples = InArg(31)
+        
     def execute(self, ctx) -> None:
-        # TODO
+        try:
+            from gempy_probability.plot_posterior import PlotPosterior
+        except ImportError:
+            print("You need to install gempy_probability to use this component.")
+            return
+
+        p = PlotPosterior(self.az_data.value)
+
+        p.create_figure(figsize=(9, 9), joyplot=True, marginal=False, likelihood=False, n_samples=self.n_samples.value)
+        p.plot_joy(
+            var_names=(self.mean_sample_name.value, self.std_sample_name.value), 
+            obs= self.y_sample_name.value,
+            iteration=self.n_samples.value // 2
+        )
         plt.show()
 
 
 @xai_component
 class PlotMarginals(Component):
     az_data: InArg[az.InferenceData]
+    sample_1_name: InArg[str]
+    sample_2_name: InArg[str]
     plot: OutArg[any]
 
     def execute(self, ctx) -> None:
-        # TODO
+        try:
+            from gempy_probability.plot_posterior import PlotPosterior
+        except ImportError:
+            print("You need to install gempy_probability to use this component.")
+            return
+
+        p = PlotPosterior(self.az_data.value)
+
+        p.create_figure(figsize=(9, 5), joyplot=False, marginal=True, likelihood=False)
+        p.plot_marginal(
+            var_names=[self.sample_1_name.value, self.sample_2_name.value],
+            plot_trace=False,
+            credible_interval=0.95,
+            kind='kde',
+            joint_kwargs={'contour': True, 'pcolormesh_kwargs': {}},
+            joint_kwargs_prior={'contour': False, 'pcolormesh_kwargs': {}})
+
         plt.show()

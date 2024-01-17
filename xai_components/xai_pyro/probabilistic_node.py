@@ -111,7 +111,5 @@ class PosteriorPredictive(Component):
         posterior_samples = self.MCMC.value.get_samples(num_samples=self.num_samples.value)
         predictive = pyro.infer.Predictive(model, posterior_samples)
         args_list = self.args.value
-        # if args_list is None:
-        #     args_list = []
         posterior_predictive = predictive(args_list)
         self.posterior_predictive.value = posterior_predictive
