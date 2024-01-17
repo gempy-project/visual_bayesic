@@ -1,5 +1,6 @@
 import torch
 import pyro
+from pyro.infer import Predictive, NUTS, MCMC
 from xai_components.base import InArg, OutArg, Component, xai_component, dynalist
 
 
@@ -36,7 +37,46 @@ class NUTS(Component):
         nuts_kernel = pyro.infer.NUTS(model)
         self.NUTS.value = nuts_kernel
         
+
+@xai_component
+class MCMC(Component):
+    NUTS: InArg[NUTS]
+    num_samples: InArg[int]
+    num_chains: InArg[int]
+    mcmc: OutArg[pyro.infer.MCMC]
+    
+    def execute(self, ctx) -> None:
+        nuts_kernel = self.NUTS.value
+        mcmc = pyro.infer.MCMC(nuts_kernel, num_samples=self.num_samples.value, num_chains=self.num_chains.value)
+        self.mcmc.value = mcmc
         
+        
+@xai_component
+class RunMCMC(Component):
+    mcmc: InArg[any]
+    args: InArg[dynalist]
+    # posterior_samples: OutArg[any]
+    
+    def execute(self, ctx) -> None:
+        mcmc = self.mcmc.value
+        args_list = self.args.value
+        posterior_samples = mcmc.run(args_list)
+        # self.posterior_samples.value = posterior_samples
+        
+        
+@xai_component
+class GetSamples(Component):
+    mcmc: InArg[any]
+    num_samples: InArg[int]
+    samples: OutArg[any]
+    
+    def execute(self, ctx) -> None:
+        mcmc = self.mcmc.value
+        num_samples = self.num_samples.value
+        samples = mcmc.get_samples(num_samples)
+        self.samples.value = samples
+
+
 @xai_component
 class PriorPredictive(Component):  # ? Is this only for priors?
     model: InArg[callable]  #: Function that generates a Python callable containing Pyro primitives.
@@ -59,57 +99,19 @@ class PriorPredictive(Component):  # ? Is this only for priors?
 
 
 @xai_component
-class MCMC(Component):
-    NUTS: InArg[NUTS]
-    num_samples: InArg[int]
-    num_chains: InArg[int]
-    mcmc: OutArg[pyro.infer.MCMC]
-    
-    def execute(self, ctx) -> None:
-        nuts_kernel = self.NUTS.value
-        mcmc = pyro.infer.MCMC(nuts_kernel, num_samples=self.num_samples.value, num_chains=self.num_chains.value)
-        self.mcmc.value = mcmc
-        
-        
-@xai_component
-class RunMCMC(Component):
-    mcmc: InArg[any]
-    args: InArg[dynalist]
-    posterior_samples: OutArg[any]
-    
-    def execute(self, ctx) -> None:
-        mcmc = self.mcmc.value
-        args_list = self.args.value
-        posterior_samples = mcmc.run(args_list)
-        self.posterior_samples.value = posterior_samples
-        
-        
-@xai_component
-class GetSamples(Component):
-    mcmc: InArg[any]
-    num_samples: InArg[int]
-    samples: OutArg[any]
-    
-    def execute(self, ctx) -> None:
-        mcmc = self.mcmc.value
-        num_samples = self.num_samples.value
-        samples = mcmc.get_samples(num_samples)
-        self.samples.value = samples
-        
-
-@xai_component
 class PosteriorPredictive(Component):
     model: InArg[callable]
-    posterior_samples: InArg[any]
+    MCMC: InArg[pyro.infer.MCMC]
     num_samples: InArg[int]
     args: InArg[dynalist]
     posterior_predictive: OutArg[any]
     
     def execute(self, ctx) -> None:
         model = self.model.value
-        posterior_samples = self.posterior_samples.value
-        num_samples = self.num_samples.value
-        predictive = pyro.infer.Predictive(model, posterior_samples, num_samples=num_samples)
+        posterior_samples = self.MCMC.value.get_samples(num_samples=self.num_samples.value)
+        predictive = pyro.infer.Predictive(model, posterior_samples)
         args_list = self.args.value
+        # if args_list is None:
+        #     args_list = []
         posterior_predictive = predictive(args_list)
         self.posterior_predictive.value = posterior_predictive

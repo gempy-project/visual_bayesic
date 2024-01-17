@@ -8,11 +8,12 @@ class PyroModelSampleOneRandomVariable(Component):
     model: OutArg[callable]
 
     def __init__(self):
+        super().__init__()
         self.arg1 = InArg.empty()
         self.model = OutArg.empty()
 
     def execute(self, ctx) -> None:
-        def model():
+        def pyro_model(_):
             self.arg1.value()
 
-        self.model.value = model
+        self.model.value = pyro_model
