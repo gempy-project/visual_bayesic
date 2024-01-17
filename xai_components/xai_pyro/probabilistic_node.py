@@ -45,6 +45,7 @@ class PriorPredictive(Component):  # ? Is this only for priors?
     prior: OutArg[any]
 
     def __init__(self):
+        super().__init__()
         self.num_samples = InArg.empty()
         self.model = InArg.empty()
         self.prior = OutArg.empty()
@@ -62,7 +63,7 @@ class MCMC(Component):
     NUTS: InArg[NUTS]
     num_samples: InArg[int]
     num_chains: InArg[int]
-    mcmc: OutArg[any]
+    mcmc: OutArg[pyro.infer.MCMC]
     
     def execute(self, ctx) -> None:
         nuts_kernel = self.NUTS.value

@@ -9,22 +9,50 @@ Normal Prior, several observations
 import arviz as az
 import matplotlib.pyplot as plt
 import pyro
+import pyro.distributions as dist
 import torch
 from matplotlib.ticker import StrMethodFormatter
 
 from gempy_probability.plot_posterior import PlotPosterior
-from _aux_func import infer_model
+from pyro.infer import Predictive, NUTS, MCMC
 
 y_obs = torch.tensor([2.12])
 y_obs_list = torch.tensor([2.12, 2.06, 2.08, 2.05, 2.08, 2.09,
                            2.19, 2.07, 2.16, 2.11, 2.13, 1.92])
 pyro.set_rng_seed(4003)
 
+
 # %%
-az_data = infer_model(
-    distributions_family="normal_distribution",
-    data=y_obs_list
+def model(distributions_family, data):
+    if distributions_family == "normal_distribution":
+        mu = pyro.sample('$\mu$', dist.Normal(2.07, 0.07))
+    elif distributions_family in "uniform_distribution":
+        mu = pyro.sample('$\mu$', dist.Uniform(0, 10))
+    else:
+        raise ValueError("distributions_family must be either 'normal_distribution' or 'uniform_distribution'")
+    sigma = pyro.sample('$\sigma$', dist.Gamma(0.3, 3))
+    y = pyro.sample('$y$', dist.Normal(mu, sigma), obs=data)
+    return y
+
+
+# %%
+# 1. Prior Sampling
+prior = Predictive(model, num_samples=100)("normal_distribution", y_obs_list)
+# 2. MCMC Sampling
+nuts_kernel = NUTS(model)
+mcmc = MCMC(nuts_kernel, num_samples=1000, warmup_steps=100)  # Assuming 1000 warmup steps
+mcmc.run("normal_distribution", y_obs_list)
+# Get posterior samples
+posterior_samples = mcmc.get_samples(1100)
+# 3. Sample from Posterior Predictive
+posterior_predictive = Predictive(model, posterior_samples)("normal_distribution", y_obs_list)
+# %%
+data = az.from_pyro(
+    posterior=mcmc,
+    prior=prior,
+    posterior_predictive=posterior_predictive
 )
+az_data = data
 az.plot_trace(az_data)
 plt.show()
 
