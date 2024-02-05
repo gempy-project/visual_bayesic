@@ -6,7 +6,7 @@ from matplotlib.ticker import StrMethodFormatter
 from xai_components.base import InArg, Component, xai_component, OutArg
 
 
-@xai_component
+@xai_component(color="#4d4141")
 class ArvizObject(Component):
     mcmc: InArg[pyro.infer.MCMC]
     prior_predictive_values: InArg[dict]
@@ -31,7 +31,7 @@ class ArvizObject(Component):
         self.az_data.value = az_data
 
 
-@xai_component
+@xai_component(color="#776f85")
 class PlotTrace(Component):
     az_data: InArg[az.InferenceData]
     plot: OutArg[any]
@@ -41,7 +41,7 @@ class PlotTrace(Component):
         plt.show()
 
 
-@xai_component
+@xai_component(color="#70A3B3")
 class PlotPrior(Component):
     az_data: InArg[az.InferenceData]
     plot: OutArg[any]
@@ -52,7 +52,7 @@ class PlotPrior(Component):
         plt.show()
 
 
-@xai_component
+@xai_component(color="#DA8886")
 class PlotNormalLikelihood(Component):
     az_data: InArg[az.InferenceData]
     mean_sample_name: InArg[str]
@@ -83,7 +83,7 @@ class PlotNormalLikelihood(Component):
         plt.show()
 
 
-@xai_component
+@xai_component(color="#DA8886")
 class PlotNormalLikelihoodJoy(Component):
     az_data: InArg[az.InferenceData]
     mean_sample_name: InArg[str]
@@ -114,7 +114,7 @@ class PlotNormalLikelihoodJoy(Component):
         plt.show()
 
 
-@xai_component
+@xai_component(color="#776f85")
 class PlotMarginals(Component):
     az_data: InArg[az.InferenceData]
     sample_1_name: InArg[str]

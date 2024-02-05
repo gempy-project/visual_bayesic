@@ -10,7 +10,7 @@ import matplotlib.image as mpimg
 from io import BytesIO
 
 
-@xai_component
+@xai_component(color="#70A3B3")
 class Normal(Component):
     mean: InArg[float]
     std: InArg[float]
@@ -38,7 +38,7 @@ class Normal(Component):
         self.fn.value = normal_wrapper
 
 
-@xai_component
+@xai_component(color="#70A3B3")
 class Gamma(Component):
     concentration: InArg[float]
     rate: InArg[float]
@@ -66,7 +66,7 @@ class Gamma(Component):
         self.fn.value = gamma_wrapper
 
 
-@xai_component
+@xai_component(color="#70A3B3")
 class Uniform(Component):
     low: InArg[float]
     high: InArg[float]

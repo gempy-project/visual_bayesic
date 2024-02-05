@@ -4,7 +4,7 @@ from pyro.infer import Predictive, NUTS, MCMC
 from xai_components.base import InArg, OutArg, Component, xai_component, dynalist
 
 
-@xai_component
+@xai_component(color="#b47194")
 class Sample(Component):
     name: InArg[str]
     fn: InArg[callable]  #: Function that generates a distribution
@@ -27,7 +27,7 @@ class Sample(Component):
         self.sample.value = sample_wrapper
 
 
-@xai_component
+@xai_component(color="#776f85")
 class NUTS(Component):
     model: InArg[callable]
     NUTS: OutArg[NUTS]
@@ -38,7 +38,7 @@ class NUTS(Component):
         self.NUTS.value = nuts_kernel
         
 
-@xai_component
+@xai_component(color="#776f85")
 class MCMC(Component):
     NUTS: InArg[NUTS]
     num_samples: InArg[int]
@@ -51,7 +51,7 @@ class MCMC(Component):
         self.mcmc.value = mcmc
         
         
-@xai_component
+@xai_component(color="#776f85")
 class RunMCMC(Component):
     mcmc: InArg[any]
     args: InArg[dynalist]
@@ -77,7 +77,7 @@ class GetSamples(Component):
         self.samples.value = samples
 
 
-@xai_component
+@xai_component(color="#70A3B3")
 class PriorPredictive(Component):  # ? Is this only for priors?
     model: InArg[callable]  #: Function that generates a Python callable containing Pyro primitives.
     num_samples: InArg[int]
@@ -98,7 +98,7 @@ class PriorPredictive(Component):  # ? Is this only for priors?
         self.prior.value = prior_predictive
 
 
-@xai_component
+@xai_component(color="#DA8886")
 class PosteriorPredictive(Component):
     model: InArg[callable]
     MCMC: InArg[pyro.infer.MCMC]

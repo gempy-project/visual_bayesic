@@ -1,10 +1,10 @@
-from xai_components.base import InArg, OutArg, Component, xai_component
+from xai_components.base import InArg, OutArg, Component, xai_component, dynalist
 
 
-@xai_component()
-class PyroModelSampleOneRandomVariable(Component):
+@xai_component(color="#70856f")
+class PyroModel(Component):
     # TODO: Here we need to have multiple models
-    arg1: InArg[callable]
+    arg1: InArg[dynalist]
     model: OutArg[callable]
 
     def __init__(self):
@@ -14,6 +14,7 @@ class PyroModelSampleOneRandomVariable(Component):
 
     def execute(self, ctx) -> None:
         def pyro_model(_):
-            self.arg1.value()
+            for arg in self.arg1.value():
+                arg()
 
         self.model.value = pyro_model
