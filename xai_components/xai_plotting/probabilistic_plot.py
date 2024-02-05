@@ -140,3 +140,34 @@ class PlotMarginals(Component):
             joint_kwargs_prior={'contour': False, 'pcolormesh_kwargs': {}})
 
         plt.show()
+
+
+@xai_component
+@xai_component(color="#776f85")
+class VisualizeModelGraph(Component):
+    model_function: InArg[any]
+
+    def __init__(self):
+        self.model_function = InArg.empty()
+
+    def execute(self, ctx) -> None:
+        import torch
+        import matplotlib.image as mpimg
+        from io import BytesIO
+
+        data = torch.ones(10)
+        png_path = "network.png"
+        dot = pyro.render_model(
+            model=self.model_function.value,
+            model_args=(data,),
+            render_params=True,
+            render_distributions=True,
+        )
+        # Render the Digraph object into memory as PNG
+        png_data = dot.pipe(format='png')
+
+        # Convert byte data to image
+        img = mpimg.imread(BytesIO(png_data), format='PNG')
+        plt.imshow(img)
+        plt.axis('off')  # Turn off axis
+        plt.show()
