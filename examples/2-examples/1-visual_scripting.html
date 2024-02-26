@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Visual Scripting compiled model &#8212; Visual Bayesic 0.1.dev19+gc3d2b81.d20231101 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=4a90727b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=f2a985cd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <script src="../../_static/documentation_options.js?v=0e9b3a5d"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Normal Prior, several observations" href="1.1_Intro_to_Bayesian_Inference.html" />
+    <link rel="prev" title="Simple example using Pyro: Moving the bell" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-2-examples-1-visual-scripting-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="visual-scripting-compiled-model">
+<span id="sphx-glr-examples-2-examples-1-visual-scripting-py"></span><h1>Visual Scripting compiled model<a class="headerlink" href="#visual-scripting-compiled-model" title="Link to this heading">¶</a></h1>
+<ul class="sphx-glr-horizontal">
+<li><img src="../../_images/sphx_glr_1-visual_scripting_001.png" srcset="../../_images/sphx_glr_1-visual_scripting_001.png" alt="1 visual scripting" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_1-visual_scripting_002.png" srcset="../../_images/sphx_glr_1-visual_scripting_002.png" alt="$\mu$, $\mu$, $\sigma$, $\sigma$" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_1-visual_scripting_003.png" srcset="../../_images/sphx_glr_1-visual_scripting_003.png" alt="Likelihood" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_1-visual_scripting_004.png" srcset="../../_images/sphx_glr_1-visual_scripting_004.png" alt="1 visual scripting" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_1-visual_scripting_005.png" srcset="../../_images/sphx_glr_1-visual_scripting_005.png" alt="1 visual scripting" class = "sphx-glr-multi-img"/></li>
+</ul>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Executing: Normal
+
+Executing: Sample
+
+Executing: Gamma
+
+Executing: Sample
+
+Executing: Normal
+
+Executing: Sample
+
+Executing: PyroModel
+
+Executing: VisualizeModelGraph
+
+Executing: PriorPredictive
+
+Executing: NUTS
+
+Executing: MCMC
+
+Executing: RunMCMC
+
+Warmup:   0%|                                                        | 0/100 [00:00, ?it/s]
+Warmup:  31%|████         | 31/100 [00:00, 286.49it/s, step size=2.48e-02, acc. prob=0.753]
+Sample:  60%|███████▊     | 60/100 [00:00, 270.15it/s, step size=3.71e-01, acc. prob=0.917]
+Sample: 100%|████████████| 100/100 [00:00, 314.77it/s, step size=3.71e-01, acc. prob=0.925]
+
+
+Executing: PosteriorPredictive
+
+Executing: ArvizObject
+C:\Users\MigueldelaVarga\PycharmProjects\VisualBayesic\venv\lib\site-packages\arviz\data\io_pyro.py:157: UserWarning: Could not get vectorized trace, log_likelihood group will be omitted. Check your model vectorization or set log_likelihood=False
+  warnings.warn(
+posterior predictive shape not compatible with number of chains and draws.This can mean that some draws or even whole chains are not represented.
+
+Executing: PlotPrior
+
+Executing: PlotNormalLikelihood
+Setting Backend To: AvailableBackends.numpy
+
+Executing: PlotNormalLikelihoodJoy
+
+Executing: PlotMarginals
+
+Finished Executing
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">ArgumentParser</span>
+<span class="kn">from</span> <span class="nn">xai_components.base</span> <span class="kn">import</span> <span class="n">SubGraphExecutor</span>
+<span class="kn">from</span> <span class="nn">xai_components.xai_controlflow.branches</span> <span class="kn">import</span> <span class="n">BranchComponent</span>
+<span class="kn">from</span> <span class="nn">xai_components.xai_obsolete.prob_models</span> <span class="kn">import</span> <span class="n">VisualizeModelGraph</span>
+<span class="kn">from</span> <span class="nn">xai_components.xai_plotting.probabilistic_plot</span> <span class="kn">import</span> <span class="n">ArvizObject</span><span class="p">,</span> <span class="n">PlotPrior</span><span class="p">,</span> <span class="n">PlotNormalLikelihood</span><span class="p">,</span> <span class="n">PlotMarginals</span><span class="p">,</span> <span class="n">PlotNormalLikelihoodJoy</span>
+<span class="kn">from</span> <span class="nn">xai_components.xai_probabilistic_models.probabilistic_models_I</span> <span class="kn">import</span> <span class="n">PyroModel</span>
+<span class="kn">from</span> <span class="nn">xai_components.xai_probability_distributions.probabilistic_distributions</span> <span class="kn">import</span> <span class="n">Gamma</span><span class="p">,</span> <span class="n">Uniform</span><span class="p">,</span> <span class="n">Normal</span>
+<span class="kn">from</span> <span class="nn">xai_components.xai_pyro.probabilistic_node</span> <span class="kn">import</span> <span class="n">MCMC</span><span class="p">,</span> <span class="n">RunMCMC</span><span class="p">,</span> <span class="n">NUTS</span><span class="p">,</span> <span class="n">PriorPredictive</span><span class="p">,</span> <span class="n">PosteriorPredictive</span><span class="p">,</span> <span class="n">Sample</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">ctx</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="n">c_0</span> <span class="o">=</span> <span class="n">Normal</span><span class="p">()</span>
+    <span class="n">c_1</span> <span class="o">=</span> <span class="n">Sample</span><span class="p">()</span>
+    <span class="n">c_2</span> <span class="o">=</span> <span class="n">PyroModel</span><span class="p">()</span>
+    <span class="n">c_3</span> <span class="o">=</span> <span class="n">VisualizeModelGraph</span><span class="p">()</span>
+    <span class="n">c_4</span> <span class="o">=</span> <span class="n">PriorPredictive</span><span class="p">()</span>
+    <span class="n">c_5</span> <span class="o">=</span> <span class="n">ArvizObject</span><span class="p">()</span>
+    <span class="n">c_6</span> <span class="o">=</span> <span class="n">PlotPrior</span><span class="p">()</span>
+    <span class="n">c_7</span> <span class="o">=</span> <span class="n">PlotNormalLikelihood</span><span class="p">()</span>
+    <span class="n">c_8</span> <span class="o">=</span> <span class="n">PlotNormalLikelihoodJoy</span><span class="p">()</span>
+    <span class="n">c_9</span> <span class="o">=</span> <span class="n">PosteriorPredictive</span><span class="p">()</span>
+    <span class="n">c_10</span> <span class="o">=</span> <span class="n">Sample</span><span class="p">()</span>
+    <span class="n">c_11</span> <span class="o">=</span> <span class="n">Gamma</span><span class="p">()</span>
+    <span class="n">c_12</span> <span class="o">=</span> <span class="n">PlotMarginals</span><span class="p">()</span>
+    <span class="n">c_13</span> <span class="o">=</span> <span class="n">Uniform</span><span class="p">()</span>
+    <span class="n">c_14</span> <span class="o">=</span> <span class="n">BranchComponent</span><span class="p">()</span>
+    <span class="n">c_15</span> <span class="o">=</span> <span class="n">Sample</span><span class="p">()</span>
+    <span class="n">c_16</span> <span class="o">=</span> <span class="n">Normal</span><span class="p">()</span>
+    <span class="n">c_17</span> <span class="o">=</span> <span class="n">Sample</span><span class="p">()</span>
+    <span class="n">c_18</span> <span class="o">=</span> <span class="n">MCMC</span><span class="p">()</span>
+    <span class="n">c_19</span> <span class="o">=</span> <span class="n">RunMCMC</span><span class="p">()</span>
+    <span class="n">c_20</span> <span class="o">=</span> <span class="n">NUTS</span><span class="p">()</span>
+    <span class="n">c_0</span><span class="o">.</span><span class="n">mean</span> <span class="o">=</span> <span class="n">c_17</span><span class="o">.</span><span class="n">sample</span>
+    <span class="n">c_0</span><span class="o">.</span><span class="n">std</span> <span class="o">=</span> <span class="n">c_10</span><span class="o">.</span><span class="n">sample</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;$y$&#39;</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_0</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_0</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_0</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_0</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_0</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_0</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_0</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_0</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_0</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_0</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.12</span><span class="p">,</span> <span class="mf">2.06</span><span class="p">,</span> <span class="mf">2.08</span><span class="p">,</span> <span class="mf">2.05</span><span class="p">,</span> <span class="mf">2.08</span><span class="p">,</span> <span class="mf">2.09</span><span class="p">,</span> <span class="mf">2.19</span><span class="p">,</span> <span class="mf">2.07</span><span class="p">,</span> <span class="mf">2.16</span><span class="p">,</span> <span class="mf">2.11</span><span class="p">,</span> <span class="mf">2.13</span><span class="p">,</span> <span class="mf">1.92</span><span class="p">]</span>
+    <span class="n">c_2</span><span class="o">.</span><span class="n">arg1</span> <span class="o">=</span> <span class="n">c_1</span><span class="o">.</span><span class="n">sample</span>
+    <span class="n">c_3</span><span class="o">.</span><span class="n">model_function</span> <span class="o">=</span> <span class="n">c_2</span><span class="o">.</span><span class="n">model</span>
+    <span class="n">c_4</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">c_2</span><span class="o">.</span><span class="n">model</span>
+    <span class="n">c_4</span><span class="o">.</span><span class="n">num_samples</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">c_5</span><span class="o">.</span><span class="n">mcmc</span> <span class="o">=</span> <span class="n">c_18</span><span class="o">.</span><span class="n">mcmc</span>
+    <span class="n">c_5</span><span class="o">.</span><span class="n">prior_predictive_values</span> <span class="o">=</span> <span class="n">c_4</span><span class="o">.</span><span class="n">prior</span>
+    <span class="n">c_5</span><span class="o">.</span><span class="n">posterior_predictive_values</span> <span class="o">=</span> <span class="n">c_9</span><span class="o">.</span><span class="n">posterior_predictive</span>
+    <span class="n">c_6</span><span class="o">.</span><span class="n">az_data</span> <span class="o">=</span> <span class="n">c_5</span><span class="o">.</span><span class="n">az_data</span>
+    <span class="n">c_6</span><span class="o">.</span><span class="n">az_data</span> <span class="o">=</span> <span class="n">c_5</span><span class="o">.</span><span class="n">az_data</span>
+    <span class="n">c_7</span><span class="o">.</span><span class="n">az_data</span> <span class="o">=</span> <span class="n">c_5</span><span class="o">.</span><span class="n">az_data</span>
+    <span class="n">c_7</span><span class="o">.</span><span class="n">mean_sample_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">mu$&#39;</span>
+    <span class="n">c_7</span><span class="o">.</span><span class="n">std_sample_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">sigma$&#39;</span>
+    <span class="n">c_7</span><span class="o">.</span><span class="n">y_sample_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;$y$&#39;</span>
+    <span class="n">c_8</span><span class="o">.</span><span class="n">az_data</span> <span class="o">=</span> <span class="n">c_5</span><span class="o">.</span><span class="n">az_data</span>
+    <span class="n">c_8</span><span class="o">.</span><span class="n">mean_sample_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">mu$&#39;</span>
+    <span class="n">c_8</span><span class="o">.</span><span class="n">std_sample_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">sigma$&#39;</span>
+    <span class="n">c_8</span><span class="o">.</span><span class="n">y_sample_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;$y$&#39;</span>
+    <span class="n">c_9</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">c_2</span><span class="o">.</span><span class="n">model</span>
+    <span class="n">c_9</span><span class="o">.</span><span class="n">MCMC</span> <span class="o">=</span> <span class="n">c_18</span><span class="o">.</span><span class="n">mcmc</span>
+    <span class="n">c_9</span><span class="o">.</span><span class="n">num_samples</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">c_10</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">sigma$&#39;</span>
+    <span class="n">c_10</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_11</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_10</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_11</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_11</span><span class="o">.</span><span class="n">concentration</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.3</span>
+    <span class="n">c_11</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">3.01</span>
+    <span class="n">c_12</span><span class="o">.</span><span class="n">az_data</span> <span class="o">=</span> <span class="n">c_5</span><span class="o">.</span><span class="n">az_data</span>
+    <span class="n">c_12</span><span class="o">.</span><span class="n">sample_1_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">mu$&#39;</span>
+    <span class="n">c_12</span><span class="o">.</span><span class="n">sample_2_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">sigma$&#39;</span>
+    <span class="n">c_13</span><span class="o">.</span><span class="n">low</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">c_13</span><span class="o">.</span><span class="n">high</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">10.0</span>
+    <span class="n">c_14</span><span class="o">.</span><span class="n">condition</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">mu$&#39;</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_13</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_13</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_13</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_13</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_13</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_13</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_13</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_13</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_13</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_13</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_13</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_13</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_16</span><span class="o">.</span><span class="n">mean</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">2.07</span>
+    <span class="n">c_16</span><span class="o">.</span><span class="n">std</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.07</span>
+    <span class="n">c_17</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">mu$&#39;</span>
+    <span class="n">c_17</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_16</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_17</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_16</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_17</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_16</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_17</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_16</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_17</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_16</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_17</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_16</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_17</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_16</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_17</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_16</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_17</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_16</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_17</span><span class="o">.</span><span class="n">fn</span> <span class="o">=</span> <span class="n">c_16</span><span class="o">.</span><span class="n">fn</span>
+    <span class="n">c_18</span><span class="o">.</span><span class="n">NUTS</span> <span class="o">=</span> <span class="n">c_20</span><span class="o">.</span><span class="n">NUTS</span>
+    <span class="n">c_18</span><span class="o">.</span><span class="n">NUTS</span> <span class="o">=</span> <span class="n">c_20</span><span class="o">.</span><span class="n">NUTS</span>
+    <span class="n">c_18</span><span class="o">.</span><span class="n">num_samples</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="n">c_18</span><span class="o">.</span><span class="n">num_chains</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">c_19</span><span class="o">.</span><span class="n">mcmc</span> <span class="o">=</span> <span class="n">c_18</span><span class="o">.</span><span class="n">mcmc</span>
+    <span class="n">c_20</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">c_2</span><span class="o">.</span><span class="n">model</span>
+    <span class="n">c_0</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_1</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_2</span>
+    <span class="n">c_2</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_3</span>
+    <span class="n">c_3</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_4</span>
+    <span class="n">c_4</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_20</span>
+    <span class="n">c_5</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_6</span>
+    <span class="n">c_6</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_7</span>
+    <span class="n">c_7</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_8</span>
+    <span class="n">c_8</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_12</span>
+    <span class="n">c_9</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_5</span>
+    <span class="n">c_10</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_0</span>
+    <span class="n">c_11</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_10</span>
+    <span class="n">c_12</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">c_13</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_15</span>
+    <span class="n">c_14</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_11</span>
+    <span class="n">c_14</span><span class="o">.</span><span class="n">when_true</span> <span class="o">=</span> <span class="n">SubGraphExecutor</span><span class="p">(</span><span class="n">c_16</span><span class="p">)</span>
+    <span class="n">c_14</span><span class="o">.</span><span class="n">when_false</span> <span class="o">=</span> <span class="n">SubGraphExecutor</span><span class="p">(</span><span class="n">c_13</span><span class="p">)</span>
+    <span class="n">c_15</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">c_16</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_17</span>
+    <span class="n">c_17</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">c_18</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_19</span>
+    <span class="n">c_19</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_9</span>
+    <span class="n">c_20</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_18</span>
+    <span class="n">next_component</span> <span class="o">=</span> <span class="n">c_14</span>
+    <span class="k">while</span> <span class="n">next_component</span><span class="p">:</span>
+        <span class="n">next_component</span> <span class="o">=</span> <span class="n">next_component</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">main</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Finished Executing&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.945 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-2-examples-1-visual-scripting-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/64be31225125053ed757a7483394c9a2/1-visual_scripting.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">1-visual_scripting.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/c19d111c9063b0ebfee17d87d9272b5e/1-visual_scripting.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">1-visual_scripting.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/logos/logo-black.svg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=terranigma-solutions&repo=visual-bayesic&type=star&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance.html">Maintenance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Galleries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../external/external_examples.html">External Examples</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1-tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Simple example using Pyro: Moving the bell</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Visual Scripting compiled model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Intro_to_Bayesian_Inference.html">Normal Prior, several observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Intro_to_Bayesian_Inference.html">Uniform Prior, several observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Intro_to_Bayesian_Inference.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Intro_to_Bayesian_Inference.html">Uniform Prior, single observation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Intro_to_Bayesian_Inference.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Intro_to_Bayesian_Inference.html">Normal Prior, single observation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Intro_to_Bayesian_Inference.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_aux_func.html">Example of a Pyro model and inference</a></li>
+</ul>
+</li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023-2024, Miguel de la Varga and Maximilian Hallenberger.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../../_sources/examples/2-examples/1-visual_scripting.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

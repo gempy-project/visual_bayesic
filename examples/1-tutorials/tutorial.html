@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Getting started with Visual Bayesic &#8212; Visual Bayesic 0.1.dev19+gc3d2b81.d20231101 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=4a90727b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=f2a985cd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <script src="../../_static/documentation_options.js?v=0e9b3a5d"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Simple example using Pyro: Moving the bell" href="../2-examples/index.html" />
+    <link rel="prev" title="Getting Started with Visual Scripting in Bayesian Inference" href="getting_started.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-1-tutorials-tutorial-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="getting-started-with-visual-bayesic">
+<span id="sphx-glr-examples-1-tutorials-tutorial-py"></span><h1>Getting started with Visual Bayesic<a class="headerlink" href="#getting-started-with-visual-bayesic" title="Link to this heading">¶</a></h1>
+<p>Check out the tutorial.xircuit file to see the visual representation of the code below.
+from argparse import ArgumentParser</p>
+<ul class="sphx-glr-horizontal">
+<li><img src="../../_images/sphx_glr_tutorial_001.png" srcset="../../_images/sphx_glr_tutorial_001.png" alt="tutorial" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_tutorial_002.png" srcset="../../_images/sphx_glr_tutorial_002.png" alt="Likelihood mean , Likelihood mean , Likelihood std, Likelihood std" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_tutorial_003.png" srcset="../../_images/sphx_glr_tutorial_003.png" alt="Likelihood mean , Likelihood mean , Likelihood std, Likelihood std" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_tutorial_004.png" srcset="../../_images/sphx_glr_tutorial_004.png" alt="Likelihood mean , Likelihood mean , Likelihood std, Likelihood std" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_tutorial_005.png" srcset="../../_images/sphx_glr_tutorial_005.png" alt="Likelihood mean , Likelihood std" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_tutorial_006.png" srcset="../../_images/sphx_glr_tutorial_006.png" alt="tutorial" class = "sphx-glr-multi-img"/></li>
+</ul>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Executing: NormalSampler
+
+Executing: GammaSampler
+
+Executing: NormalSampler
+
+Executing: PyroModel
+
+Executing: VisualizeModelGraph
+
+Executing: FullInference
+
+Warmup:   0%|                                                       | 0/2000 [00:00, ?it/s]
+Warmup:   0%|             | 10/2000 [00:00, 51.42it/s, step size=2.26e-02, acc. prob=0.673]
+Warmup:   1%|             | 16/2000 [00:00, 41.05it/s, step size=9.33e-02, acc. prob=0.747]
+Warmup:   1%|▏            | 22/2000 [00:00, 43.93it/s, step size=2.06e-02, acc. prob=0.736]
+Warmup:   1%|▏            | 29/2000 [00:00, 51.26it/s, step size=5.96e-02, acc. prob=0.762]
+Warmup:   2%|▏            | 38/2000 [00:00, 62.51it/s, step size=4.23e-02, acc. prob=0.765]
+Warmup:   2%|▎            | 45/2000 [00:00, 58.66it/s, step size=2.08e-02, acc. prob=0.763]
+Warmup:   3%|▍            | 62/2000 [00:00, 88.05it/s, step size=9.51e-02, acc. prob=0.781]
+Warmup:   4%|▍            | 72/2000 [00:01, 90.17it/s, step size=1.94e-01, acc. prob=0.787]
+Warmup:   4%|▌           | 86/2000 [00:01, 102.42it/s, step size=3.66e-02, acc. prob=0.779]
+Warmup:   5%|▋            | 97/2000 [00:01, 93.28it/s, step size=1.80e-01, acc. prob=0.789]
+Warmup:   6%|▋          | 124/2000 [00:01, 139.01it/s, step size=1.89e-01, acc. prob=0.775]
+Warmup:   8%|▊          | 157/2000 [00:01, 190.31it/s, step size=2.46e-01, acc. prob=0.771]
+Warmup:   9%|█          | 189/2000 [00:01, 225.25it/s, step size=5.22e-01, acc. prob=0.776]
+Warmup:  11%|█▏         | 223/2000 [00:01, 246.60it/s, step size=2.41e-01, acc. prob=0.776]
+Warmup:  13%|█▍         | 256/2000 [00:01, 268.67it/s, step size=1.46e+00, acc. prob=0.776]
+Warmup:  14%|█▌         | 286/2000 [00:01, 276.60it/s, step size=1.30e-01, acc. prob=0.775]
+Warmup:  16%|█▋         | 315/2000 [00:02, 260.37it/s, step size=1.14e+00, acc. prob=0.779]
+Warmup:  17%|█▉         | 342/2000 [00:02, 260.60it/s, step size=5.53e-01, acc. prob=0.779]
+Warmup:  19%|██         | 379/2000 [00:02, 289.90it/s, step size=5.31e-01, acc. prob=0.780]
+Warmup:  21%|██▎        | 414/2000 [00:02, 305.36it/s, step size=7.11e-01, acc. prob=0.782]
+Warmup:  22%|██▍        | 446/2000 [00:02, 306.05it/s, step size=5.73e-01, acc. prob=0.783]
+Warmup:  24%|██▌        | 477/2000 [00:02, 272.23it/s, step size=2.64e-01, acc. prob=0.781]
+Warmup:  25%|██▊        | 506/2000 [00:02, 254.02it/s, step size=5.71e-01, acc. prob=0.782]
+Warmup:  27%|██▉        | 535/2000 [00:02, 262.90it/s, step size=4.05e-01, acc. prob=0.782]
+Warmup:  28%|███▏       | 569/2000 [00:02, 283.40it/s, step size=2.48e-01, acc. prob=0.782]
+Warmup:  30%|███▎       | 603/2000 [00:03, 299.07it/s, step size=3.81e-01, acc. prob=0.783]
+Warmup:  32%|███▍       | 635/2000 [00:03, 304.34it/s, step size=3.29e-01, acc. prob=0.784]
+Warmup:  33%|███▋       | 666/2000 [00:03, 301.85it/s, step size=3.87e-01, acc. prob=0.784]
+Warmup:  35%|███▊       | 703/2000 [00:03, 321.55it/s, step size=6.87e-01, acc. prob=0.786]
+Warmup:  38%|████▏      | 751/2000 [00:03, 366.89it/s, step size=6.34e-01, acc. prob=0.786]
+Warmup:  40%|████▎      | 791/2000 [00:03, 375.60it/s, step size=9.87e-01, acc. prob=0.787]
+Warmup:  42%|████▌      | 832/2000 [00:03, 383.18it/s, step size=4.25e-01, acc. prob=0.787]
+Warmup:  44%|████▊      | 871/2000 [00:03, 374.22it/s, step size=6.27e-01, acc. prob=0.788]
+Warmup:  45%|████▉      | 909/2000 [00:03, 335.44it/s, step size=5.71e-01, acc. prob=0.788]
+Warmup:  47%|█████▏     | 949/2000 [00:04, 350.53it/s, step size=1.08e+00, acc. prob=0.788]
+Warmup:  49%|█████▍     | 985/2000 [00:04, 302.19it/s, step size=8.09e-02, acc. prob=0.787]
+Sample:  51%|█████     | 1017/2000 [00:04, 247.10it/s, step size=2.84e-01, acc. prob=0.960]
+Sample:  52%|█████▏    | 1045/2000 [00:04, 242.93it/s, step size=2.84e-01, acc. prob=0.966]
+Sample:  54%|█████▎    | 1071/2000 [00:04, 217.29it/s, step size=2.84e-01, acc. prob=0.968]
+Sample:  55%|█████▍    | 1095/2000 [00:04, 197.04it/s, step size=2.84e-01, acc. prob=0.974]
+Sample:  56%|█████▌    | 1116/2000 [00:04, 190.65it/s, step size=2.84e-01, acc. prob=0.976]
+Sample:  57%|█████▋    | 1139/2000 [00:05, 198.30it/s, step size=2.84e-01, acc. prob=0.975]
+Sample:  58%|█████▊    | 1160/2000 [00:05, 190.47it/s, step size=2.84e-01, acc. prob=0.975]
+Sample:  59%|█████▉    | 1182/2000 [00:05, 194.75it/s, step size=2.84e-01, acc. prob=0.975]
+Sample:  60%|██████    | 1202/2000 [00:05, 196.12it/s, step size=2.84e-01, acc. prob=0.977]
+Sample:  61%|██████    | 1222/2000 [00:05, 182.86it/s, step size=2.84e-01, acc. prob=0.978]
+Sample:  62%|██████▏   | 1241/2000 [00:05, 179.40it/s, step size=2.84e-01, acc. prob=0.978]
+Sample:  63%|██████▎   | 1260/2000 [00:05, 180.35it/s, step size=2.84e-01, acc. prob=0.978]
+Sample:  64%|██████▍   | 1282/2000 [00:05, 190.42it/s, step size=2.84e-01, acc. prob=0.977]
+Sample:  65%|██████▌   | 1302/2000 [00:05, 186.71it/s, step size=2.84e-01, acc. prob=0.976]
+Sample:  66%|██████▌   | 1324/2000 [00:06, 195.77it/s, step size=2.84e-01, acc. prob=0.977]
+Sample:  67%|██████▋   | 1344/2000 [00:06, 189.06it/s, step size=2.84e-01, acc. prob=0.977]
+Sample:  68%|██████▊   | 1366/2000 [00:06, 194.51it/s, step size=2.84e-01, acc. prob=0.974]
+Sample:  69%|██████▉   | 1386/2000 [00:06, 190.01it/s, step size=2.84e-01, acc. prob=0.975]
+Sample:  70%|███████   | 1406/2000 [00:06, 187.64it/s, step size=2.84e-01, acc. prob=0.975]
+Sample:  71%|███████▏  | 1427/2000 [00:06, 193.47it/s, step size=2.84e-01, acc. prob=0.976]
+Sample:  72%|███████▏  | 1447/2000 [00:06, 182.29it/s, step size=2.84e-01, acc. prob=0.976]
+Sample:  73%|███████▎  | 1466/2000 [00:06, 182.56it/s, step size=2.84e-01, acc. prob=0.976]
+Sample:  74%|███████▍  | 1485/2000 [00:06, 182.14it/s, step size=2.84e-01, acc. prob=0.976]
+Sample:  75%|███████▌  | 1504/2000 [00:07, 173.76it/s, step size=2.84e-01, acc. prob=0.976]
+Sample:  76%|███████▌  | 1522/2000 [00:07, 171.27it/s, step size=2.84e-01, acc. prob=0.977]
+Sample:  77%|███████▋  | 1543/2000 [00:07, 180.79it/s, step size=2.84e-01, acc. prob=0.976]
+Sample:  78%|███████▊  | 1563/2000 [00:07, 185.09it/s, step size=2.84e-01, acc. prob=0.976]
+Sample:  79%|███████▉  | 1583/2000 [00:07, 188.58it/s, step size=2.84e-01, acc. prob=0.976]
+Sample:  80%|████████  | 1603/2000 [00:07, 190.64it/s, step size=2.84e-01, acc. prob=0.975]
+Sample:  81%|████████  | 1623/2000 [00:07, 191.02it/s, step size=2.84e-01, acc. prob=0.975]
+Sample:  82%|████████▏ | 1643/2000 [00:07, 186.76it/s, step size=2.84e-01, acc. prob=0.975]
+Sample:  83%|████████▎ | 1663/2000 [00:07, 190.54it/s, step size=2.84e-01, acc. prob=0.974]
+Sample:  84%|████████▍ | 1688/2000 [00:07, 205.86it/s, step size=2.84e-01, acc. prob=0.973]
+Sample:  85%|████████▌ | 1709/2000 [00:08, 203.24it/s, step size=2.84e-01, acc. prob=0.974]
+Sample:  86%|████████▋ | 1730/2000 [00:08, 199.86it/s, step size=2.84e-01, acc. prob=0.974]
+Sample:  88%|████████▊ | 1751/2000 [00:08, 195.29it/s, step size=2.84e-01, acc. prob=0.974]
+Sample:  89%|████████▊ | 1771/2000 [00:08, 192.57it/s, step size=2.84e-01, acc. prob=0.975]
+Sample:  90%|████████▉ | 1793/2000 [00:08, 200.35it/s, step size=2.84e-01, acc. prob=0.975]
+Sample:  91%|█████████ | 1814/2000 [00:08, 182.84it/s, step size=2.84e-01, acc. prob=0.975]
+Sample:  92%|█████████▏| 1834/2000 [00:08, 186.80it/s, step size=2.84e-01, acc. prob=0.974]
+Sample:  93%|█████████▎| 1853/2000 [00:08, 187.00it/s, step size=2.84e-01, acc. prob=0.974]
+Sample:  94%|█████████▍| 1879/2000 [00:08, 203.60it/s, step size=2.84e-01, acc. prob=0.973]
+Sample:  95%|█████████▌| 1900/2000 [00:09, 189.62it/s, step size=2.84e-01, acc. prob=0.974]
+Sample:  96%|█████████▌| 1920/2000 [00:09, 183.61it/s, step size=2.84e-01, acc. prob=0.974]
+Sample:  97%|█████████▋| 1942/2000 [00:09, 192.47it/s, step size=2.84e-01, acc. prob=0.974]
+Sample:  98%|█████████▊| 1963/2000 [00:09, 197.21it/s, step size=2.84e-01, acc. prob=0.974]
+Sample:  99%|█████████▉| 1983/2000 [00:09, 193.07it/s, step size=2.84e-01, acc. prob=0.973]
+Sample: 100%|██████████| 2000/2000 [00:09, 208.81it/s, step size=2.84e-01, acc. prob=0.974]
+
+
+Executing: ArvizObject
+C:\Users\MigueldelaVarga\PycharmProjects\VisualBayesic\venv\lib\site-packages\arviz\data\io_pyro.py:157: UserWarning: Could not get vectorized trace, log_likelihood group will be omitted. Check your model vectorization or set log_likelihood=False
+  warnings.warn(
+
+Executing: PlotPrior
+
+Executing: PlotTrace
+
+Executing: PlotDensity
+
+Executing: PlotNormalLikelihoodJoy
+Setting Backend To: AvailableBackends.numpy
+
+Finished Executing
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">ArgumentParser</span>
+<span class="kn">from</span> <span class="nn">xai_components.base</span> <span class="kn">import</span> <span class="n">SubGraphExecutor</span>
+<span class="kn">from</span> <span class="nn">xai_components.xai_plotting.probabilistic_plot</span> <span class="kn">import</span> <span class="n">PlotDensity</span><span class="p">,</span> <span class="n">PlotNormalLikelihoodJoy</span><span class="p">,</span> <span class="n">PlotPrior</span><span class="p">,</span> <span class="n">ArvizObject</span><span class="p">,</span> <span class="n">PlotTrace</span><span class="p">,</span> <span class="n">VisualizeModelGraph</span>
+<span class="kn">from</span> <span class="nn">xai_components.xai_probabilistic_models.probabilistic_models_I</span> <span class="kn">import</span> <span class="n">PyroModel</span>
+<span class="kn">from</span> <span class="nn">xai_components.xai_probability_distributions.probabilistic_distributions</span> <span class="kn">import</span> <span class="n">GammaSampler</span><span class="p">,</span> <span class="n">NormalSampler</span>
+<span class="kn">from</span> <span class="nn">xai_components.xai_pyro.probabilistic_node</span> <span class="kn">import</span> <span class="n">FullInference</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">ctx</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="n">c_0</span> <span class="o">=</span> <span class="n">VisualizeModelGraph</span><span class="p">()</span>
+    <span class="n">c_1</span> <span class="o">=</span> <span class="n">NormalSampler</span><span class="p">()</span>
+    <span class="n">c_2</span> <span class="o">=</span> <span class="n">NormalSampler</span><span class="p">()</span>
+    <span class="n">c_3</span> <span class="o">=</span> <span class="n">FullInference</span><span class="p">()</span>
+    <span class="n">c_4</span> <span class="o">=</span> <span class="n">ArvizObject</span><span class="p">()</span>
+    <span class="n">c_5</span> <span class="o">=</span> <span class="n">PlotNormalLikelihoodJoy</span><span class="p">()</span>
+    <span class="n">c_6</span> <span class="o">=</span> <span class="n">GammaSampler</span><span class="p">()</span>
+    <span class="n">c_7</span> <span class="o">=</span> <span class="n">PlotDensity</span><span class="p">()</span>
+    <span class="n">c_8</span> <span class="o">=</span> <span class="n">PlotTrace</span><span class="p">()</span>
+    <span class="n">c_9</span> <span class="o">=</span> <span class="n">PlotPrior</span><span class="p">()</span>
+    <span class="n">c_10</span> <span class="o">=</span> <span class="n">PyroModel</span><span class="p">()</span>
+    <span class="n">c_0</span><span class="o">.</span><span class="n">model_function</span> <span class="o">=</span> <span class="n">c_10</span><span class="o">.</span><span class="n">model</span>
+    <span class="n">c_0</span><span class="o">.</span><span class="n">model_function</span> <span class="o">=</span> <span class="n">c_10</span><span class="o">.</span><span class="n">model</span>
+    <span class="n">c_0</span><span class="o">.</span><span class="n">model_function</span> <span class="o">=</span> <span class="n">c_10</span><span class="o">.</span><span class="n">model</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;Likelihood</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">mean</span> <span class="o">=</span> <span class="n">c_2</span><span class="o">.</span><span class="n">sample</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">std</span> <span class="o">=</span> <span class="n">c_6</span><span class="o">.</span><span class="n">sample</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.12</span><span class="p">,</span> <span class="mf">2.06</span><span class="p">,</span> <span class="mf">2.08</span><span class="p">,</span> <span class="mf">2.05</span><span class="p">]</span>
+    <span class="n">c_2</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;Likelihood mean</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="n">c_2</span><span class="o">.</span><span class="n">mean</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">2.07</span>
+    <span class="n">c_2</span><span class="o">.</span><span class="n">std</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.08</span>
+    <span class="n">c_3</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">c_10</span><span class="o">.</span><span class="n">model</span>
+    <span class="n">c_3</span><span class="o">.</span><span class="n">num_samples</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">c_4</span><span class="o">.</span><span class="n">mcmc</span> <span class="o">=</span> <span class="n">c_3</span><span class="o">.</span><span class="n">mcmc</span>
+    <span class="n">c_4</span><span class="o">.</span><span class="n">prior_predictive_values</span> <span class="o">=</span> <span class="n">c_3</span><span class="o">.</span><span class="n">prior_predictive</span>
+    <span class="n">c_4</span><span class="o">.</span><span class="n">posterior_predictive_values</span> <span class="o">=</span> <span class="n">c_3</span><span class="o">.</span><span class="n">posterior_predictive</span>
+    <span class="n">c_5</span><span class="o">.</span><span class="n">az_data</span> <span class="o">=</span> <span class="n">c_4</span><span class="o">.</span><span class="n">az_data</span>
+    <span class="n">c_5</span><span class="o">.</span><span class="n">mean_sample_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;Likelihood mean</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="n">c_5</span><span class="o">.</span><span class="n">std_sample_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;Likelihood std&#39;</span>
+    <span class="n">c_5</span><span class="o">.</span><span class="n">y_sample_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;Likelihood</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="n">c_5</span><span class="o">.</span><span class="n">n_samples</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">19</span>
+    <span class="n">c_6</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;Likelihood std&#39;</span>
+    <span class="n">c_6</span><span class="o">.</span><span class="n">concentration</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">3.3</span>
+    <span class="n">c_6</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">1.2</span>
+    <span class="n">c_7</span><span class="o">.</span><span class="n">az_data</span> <span class="o">=</span> <span class="n">c_4</span><span class="o">.</span><span class="n">az_data</span>
+    <span class="n">c_8</span><span class="o">.</span><span class="n">az_data</span> <span class="o">=</span> <span class="n">c_4</span><span class="o">.</span><span class="n">az_data</span>
+    <span class="n">c_9</span><span class="o">.</span><span class="n">az_data</span> <span class="o">=</span> <span class="n">c_4</span><span class="o">.</span><span class="n">az_data</span>
+    <span class="n">c_10</span><span class="o">.</span><span class="n">arg1</span> <span class="o">=</span> <span class="n">c_1</span><span class="o">.</span><span class="n">sample</span>
+    <span class="n">c_0</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_3</span>
+    <span class="n">c_1</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_10</span>
+    <span class="n">c_2</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_6</span>
+    <span class="n">c_3</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_4</span>
+    <span class="n">c_4</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_9</span>
+    <span class="n">c_5</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">c_6</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_1</span>
+    <span class="n">c_7</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_5</span>
+    <span class="n">c_8</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_7</span>
+    <span class="n">c_9</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_8</span>
+    <span class="n">c_10</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">c_0</span>
+    <span class="n">next_component</span> <span class="o">=</span> <span class="n">c_2</span>
+    <span class="k">while</span> <span class="n">next_component</span><span class="p">:</span>
+        <span class="n">next_component</span> <span class="o">=</span> <span class="n">next_component</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">main</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Finished Executing&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.333 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-1-tutorials-tutorial-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/0f61f58b3b6c0e815ea8188f7bdb5805/tutorial.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">tutorial.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/f1429c5d2b90b27d9b2304aa74b90b0a/tutorial.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">tutorial.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/logos/logo-black.svg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=terranigma-solutions&repo=visual-bayesic&type=star&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance.html">Maintenance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Galleries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../external/external_examples.html">External Examples</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html">Getting Started with Visual Scripting in Bayesian Inference</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting started with Visual Bayesic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../2-examples/index.html">Simple example using Pyro: Moving the bell</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023-2024, Miguel de la Varga and Maximilian Hallenberger.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../../_sources/examples/1-tutorials/tutorial.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

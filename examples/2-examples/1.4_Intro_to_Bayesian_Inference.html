@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Normal Prior, single observation &#8212; Visual Bayesic 0.1.dev19+gc3d2b81.d20231101 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=4a90727b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=f2a985cd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <script src="../../_static/documentation_options.js?v=0e9b3a5d"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Example of a Pyro model and inference" href="_aux_func.html" />
+    <link rel="prev" title="Uniform Prior, single observation" href="1.3_Intro_to_Bayesian_Inference.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-2-examples-1-4-intro-to-bayesian-inference-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="normal-prior-single-observation">
+<span id="sphx-glr-examples-2-examples-1-4-intro-to-bayesian-inference-py"></span><h1>Normal Prior, single observation<a class="headerlink" href="#normal-prior-single-observation" title="Link to this heading">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># sphinx_gallery_thumbnail_number = -1</span>
+
+<span class="kn">import</span> <span class="nn">arviz</span> <span class="k">as</span> <span class="nn">az</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pyro</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">StrMethodFormatter</span>
+
+<span class="kn">from</span> <span class="nn">gempy_probability.plot_posterior</span> <span class="kn">import</span> <span class="n">PlotPosterior</span>
+<span class="kn">from</span> <span class="nn">_aux_func</span> <span class="kn">import</span> <span class="n">infer_model</span>
+
+<span class="n">y_obs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">2.12</span><span class="p">])</span>
+<span class="n">y_obs_list</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">2.12</span><span class="p">,</span> <span class="mf">2.06</span><span class="p">,</span> <span class="mf">2.08</span><span class="p">,</span> <span class="mf">2.05</span><span class="p">,</span> <span class="mf">2.08</span><span class="p">,</span> <span class="mf">2.09</span><span class="p">,</span>
+                           <span class="mf">2.19</span><span class="p">,</span> <span class="mf">2.07</span><span class="p">,</span> <span class="mf">2.16</span><span class="p">,</span> <span class="mf">2.11</span><span class="p">,</span> <span class="mf">2.13</span><span class="p">,</span> <span class="mf">1.92</span><span class="p">])</span>
+<span class="n">pyro</span><span class="o">.</span><span class="n">set_rng_seed</span><span class="p">(</span><span class="mi">4003</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">az_data</span> <span class="o">=</span> <span class="n">infer_model</span><span class="p">(</span>
+    <span class="n">distributions_family</span><span class="o">=</span><span class="s2">&quot;normal_distribution&quot;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">y_obs</span>
+<span class="p">)</span>
+<span class="n">az</span><span class="o">.</span><span class="n">plot_trace</span><span class="p">(</span><span class="n">az_data</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_1.4_Intro_to_Bayesian_Inference_001.png" srcset="../../_images/sphx_glr_1.4_Intro_to_Bayesian_Inference_001.png" alt="$\mu$, $\mu$, $\sigma$, $\sigma$" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Warmup:   0%|                                                       | 0/1100 [00:00, ?it/s]
+Warmup:   2%|▎           | 25/1100 [00:00, 242.36it/s, step size=7.79e-02, acc. prob=0.761]
+Warmup:   5%|▌           | 50/1100 [00:00, 155.16it/s, step size=5.05e-02, acc. prob=0.773]
+Warmup:   6%|▋           | 68/1100 [00:00, 106.87it/s, step size=2.25e-02, acc. prob=0.772]
+Warmup:   7%|▉            | 81/1100 [00:00, 82.62it/s, step size=2.71e-02, acc. prob=0.776]
+Warmup:   9%|█▏           | 97/1100 [00:00, 97.36it/s, step size=1.45e-01, acc. prob=0.769]
+Sample:  10%|█          | 112/1100 [00:01, 108.03it/s, step size=1.90e-01, acc. prob=0.982]
+Sample:  12%|█▎         | 130/1100 [00:01, 124.11it/s, step size=1.90e-01, acc. prob=0.964]
+Sample:  13%|█▍         | 148/1100 [00:01, 138.23it/s, step size=1.90e-01, acc. prob=0.945]
+Sample:  15%|█▋         | 168/1100 [00:01, 153.82it/s, step size=1.90e-01, acc. prob=0.929]
+Sample:  17%|█▉         | 190/1100 [00:01, 170.24it/s, step size=1.90e-01, acc. prob=0.932]
+Sample:  19%|██▏        | 213/1100 [00:01, 184.87it/s, step size=1.90e-01, acc. prob=0.932]
+Sample:  22%|██▍        | 240/1100 [00:01, 208.76it/s, step size=1.90e-01, acc. prob=0.832]
+Sample:  24%|██▌        | 262/1100 [00:01, 194.96it/s, step size=1.90e-01, acc. prob=0.846]
+Sample:  26%|██▊        | 283/1100 [00:01, 191.21it/s, step size=1.90e-01, acc. prob=0.852]
+Sample:  28%|███        | 303/1100 [00:01, 186.75it/s, step size=1.90e-01, acc. prob=0.865]
+Sample:  29%|███▏       | 323/1100 [00:02, 190.14it/s, step size=1.90e-01, acc. prob=0.868]
+Sample:  31%|███▍       | 344/1100 [00:02, 193.28it/s, step size=1.90e-01, acc. prob=0.860]
+Sample:  33%|███▋       | 364/1100 [00:02, 179.54it/s, step size=1.90e-01, acc. prob=0.869]
+Sample:  35%|███▊       | 383/1100 [00:02, 178.39it/s, step size=1.90e-01, acc. prob=0.873]
+Sample:  37%|████       | 402/1100 [00:02, 176.59it/s, step size=1.90e-01, acc. prob=0.879]
+Sample:  38%|████▏      | 423/1100 [00:02, 182.61it/s, step size=1.90e-01, acc. prob=0.880]
+Sample:  40%|████▍      | 442/1100 [00:02, 184.65it/s, step size=1.90e-01, acc. prob=0.885]
+Sample:  42%|████▌      | 461/1100 [00:02, 181.63it/s, step size=1.90e-01, acc. prob=0.887]
+Sample:  44%|████▊      | 480/1100 [00:02, 171.44it/s, step size=1.90e-01, acc. prob=0.887]
+Sample:  45%|████▉      | 498/1100 [00:03, 172.83it/s, step size=1.90e-01, acc. prob=0.887]
+Sample:  47%|█████▏     | 521/1100 [00:03, 186.95it/s, step size=1.90e-01, acc. prob=0.879]
+Sample:  49%|█████▍     | 540/1100 [00:03, 182.67it/s, step size=1.90e-01, acc. prob=0.879]
+Sample:  51%|█████▌     | 559/1100 [00:03, 183.52it/s, step size=1.90e-01, acc. prob=0.881]
+Sample:  53%|█████▊     | 584/1100 [00:03, 201.97it/s, step size=1.90e-01, acc. prob=0.877]
+Sample:  55%|██████     | 605/1100 [00:03, 202.68it/s, step size=1.90e-01, acc. prob=0.869]
+Sample:  61%|██████▋    | 674/1100 [00:03, 343.16it/s, step size=1.90e-01, acc. prob=0.771]
+Sample:  68%|███████▍   | 746/1100 [00:03, 452.91it/s, step size=1.90e-01, acc. prob=0.696]
+Sample:  72%|███████▉   | 792/1100 [00:04, 298.81it/s, step size=1.90e-01, acc. prob=0.709]
+Sample:  75%|████████▎  | 830/1100 [00:04, 236.29it/s, step size=1.90e-01, acc. prob=0.721]
+Sample:  78%|████████▌  | 861/1100 [00:04, 221.68it/s, step size=1.90e-01, acc. prob=0.730]
+Sample:  81%|████████▉  | 888/1100 [00:04, 216.90it/s, step size=1.90e-01, acc. prob=0.733]
+Sample:  83%|█████████▏ | 913/1100 [00:04, 204.47it/s, step size=1.90e-01, acc. prob=0.740]
+Sample:  85%|█████████▎ | 936/1100 [00:04, 200.75it/s, step size=1.90e-01, acc. prob=0.747]
+Sample:  87%|█████████▌ | 958/1100 [00:05, 183.76it/s, step size=1.90e-01, acc. prob=0.753]
+Sample:  89%|█████████▊ | 978/1100 [00:05, 181.71it/s, step size=1.90e-01, acc. prob=0.757]
+Sample:  91%|█████████▉ | 999/1100 [00:05, 187.94it/s, step size=1.90e-01, acc. prob=0.758]
+Sample:  93%|█████████▎| 1019/1100 [00:05, 182.27it/s, step size=1.90e-01, acc. prob=0.762]
+Sample:  94%|█████████▍| 1038/1100 [00:05, 176.88it/s, step size=1.90e-01, acc. prob=0.766]
+Sample:  96%|█████████▌| 1056/1100 [00:05, 173.28it/s, step size=1.90e-01, acc. prob=0.769]
+Sample:  98%|█████████▊| 1075/1100 [00:05, 174.55it/s, step size=1.90e-01, acc. prob=0.773]
+Sample:  99%|█████████▉| 1093/1100 [00:05, 169.94it/s, step size=1.90e-01, acc. prob=0.777]
+Sample: 100%|██████████| 1100/1100 [00:05, 187.01it/s, step size=1.90e-01, acc. prob=0.778]
+
+posterior predictive shape not compatible with number of chains and draws.This can mean that some draws or even whole chains are not represented.
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">PlotPosterior</span><span class="p">(</span><span class="n">az_data</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">create_figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">joyplot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">marginal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">likelihood</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">plot_marginal</span><span class="p">(</span><span class="n">var_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span> <span class="s1">&#39;$\sigma$&#39;</span><span class="p">],</span>
+                <span class="n">plot_trace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">credible_interval</span><span class="o">=</span><span class="mf">.93</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">,</span>
+                <span class="n">joint_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;contour&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;pcolormesh_kwargs&#39;</span><span class="p">:</span> <span class="p">{}},</span>
+                <span class="n">joint_kwargs_prior</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;contour&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;pcolormesh_kwargs&#39;</span><span class="p">:</span> <span class="p">{}})</span>
+
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlim.html#matplotlib.axes.Axes.set_xlim" title="matplotlib.axes.Axes.set_xlim" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">p</span><span class="o">.</span><span class="n">axjoin</span><span class="o">.</span><span class="n">set_xlim</span></a><span class="p">(</span><span class="mf">1.96</span><span class="p">,</span> <span class="mf">2.22</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">plot_normal_likelihood</span><span class="p">(</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span> <span class="s1">&#39;$\sigma$&#39;</span><span class="p">,</span> <span class="s1">&#39;$y$&#39;</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=-</span><span class="mi">6</span><span class="p">,</span> <span class="n">hide_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlim.html#matplotlib.axes.Axes.set_xlim" title="matplotlib.axes.Axes.set_xlim" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">p</span><span class="o">.</span><span class="n">likelihood_axes</span><span class="o">.</span><span class="n">set_xlim</span></a><span class="p">(</span><span class="mf">1.70</span><span class="p">,</span> <span class="mf">2.40</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_1.4_Intro_to_Bayesian_Inference_002.png" srcset="../../_images/sphx_glr_1.4_Intro_to_Bayesian_Inference_002.png" alt="Likelihood" class = "sphx-glr-single-img"/></section>
+<section id="license">
+<h1>License<a class="headerlink" href="#license" title="Link to this heading">¶</a></h1>
+<p>The code in this case study is copyrighted by Miguel de la Varga and licensed under the new BSD (3-clause) license:</p>
+<p><a class="reference external" href="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</a></p>
+<p>The text and figures in this case study are copyrighted by Miguel de la Varga and licensed under the CC BY-NC 4.0 license:</p>
+<p><a class="reference external" href="https://creativecommons.org/licenses/by-nc/4.0/">https://creativecommons.org/licenses/by-nc/4.0/</a>
+Make sure to replace the links with actual hyperlinks if you’re using a platform that supports it (e.g., Markdown or HTML). Otherwise, the plain URLs work fine for plain text.</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 7.861 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-2-examples-1-4-intro-to-bayesian-inference-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/e729fd397cd45ea9cae11219033f94ec/1.4_Intro_to_Bayesian_Inference.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">1.4_Intro_to_Bayesian_Inference.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/6424dde095f56e3e6faff07bf7f84b70/1.4_Intro_to_Bayesian_Inference.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">1.4_Intro_to_Bayesian_Inference.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/logos/logo-black.svg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=terranigma-solutions&repo=visual-bayesic&type=star&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance.html">Maintenance</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Galleries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../external/external_examples.html">External Examples</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1-tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Simple example using Pyro: Moving the bell</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-visual_scripting.html">Visual Scripting compiled model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Intro_to_Bayesian_Inference.html">Normal Prior, several observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Intro_to_Bayesian_Inference.html">Uniform Prior, several observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Intro_to_Bayesian_Inference.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Intro_to_Bayesian_Inference.html">Uniform Prior, single observation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Intro_to_Bayesian_Inference.html#license">License</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Normal Prior, single observation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_aux_func.html">Example of a Pyro model and inference</a></li>
+</ul>
+</li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023-2024, Miguel de la Varga and Maximilian Hallenberger.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../../_sources/examples/2-examples/1.4_Intro_to_Bayesian_Inference.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
