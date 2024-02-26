@@ -6,7 +6,7 @@ Visual Bayesic Documentation
 
 :Release: |version|
 :Date: |today|
-:Source: `github.com/terranigma-solutions/visual-bayesic <https://github.com/terranigma-solutions/visual-bayesic>`_
+:Source: `github.com/gempy-project/visual-bayesic <https://github.com/gempy-project/visual-bayesic>`_
 
 ----
 
