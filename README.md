@@ -22,14 +22,9 @@ Documentation (Work in Progress)
 Explore our early documentation here:
 
 Key resources:
-- [Developers Guide](https://terranigma-solutions.github.io/visual-bayesic-xircuits/)
+- [Developers Guide](https://gempy-project.github.io/visual-bayesic-xircuits/)
 
 
-Installation
-------------
 
-It's easy to get started with Visual Bayesic:
-
-`$ pip install visual-bayesic`
 
 
