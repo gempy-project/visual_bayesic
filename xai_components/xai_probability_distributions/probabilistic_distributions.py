@@ -12,8 +12,6 @@ from io import BytesIO
 
 @xai_component(color="#70A3B3")
 class Normal(Component):
-    mean: InArg[float]
-    std: InArg[float]
     fn: OutArg[any]
 
     def __init__(self):
@@ -29,7 +27,7 @@ class Normal(Component):
             # analyze if it is a scalar or a function. If it is a function, then we need to execute it
             if callable(mean_value):
                 mean_value = mean_value()
-            
+
             if callable(std_value):
                 std_value = std_value()
 
@@ -53,11 +51,11 @@ class Gamma(Component):
     def execute(self, ctx) -> None:
         def gamma_wrapper():
             concentration_value = self.concentration.value
-        
+
             # analyze if it is a scalar or a function. If it is a function, then we need to execute it
             if callable(concentration_value):
                 concentration_value = concentration_value()
-            
+
             # TODO: Add callable check for rate_value
 
             rate_value = self.rate.value
@@ -89,3 +87,99 @@ class Uniform(Component):
             return dist.Uniform(low_value, high_value)
 
         self.fn.value = uniform_wrapper
+
+
+@xai_component(color="#70A3B3")
+class NormalSampler(Component):
+    name: InArg[str]
+    mean: InArg[float]
+    std: InArg[float]
+    obs: InArg[list]
+    sample: OutArg[any]
+
+    def __init__(self):
+        super().__init__()
+        self.name = InArg.empty()
+        self.mean = InArg.empty()
+        self.std = InArg.empty()
+        self.obs = InArg.empty()
+        self.sample = OutArg.empty()
+
+    def execute(self, ctx) -> None:
+        obs_value = self.obs.value
+        if obs_value is not None:
+            obs_value = torch.tensor(obs_value, dtype=torch.float32)
+        if self.name.value is None:
+            self.name.value = "Random Variable"  # TODO: Each random variable should have a unique name 
+
+        def sample_wrapper():
+            distribution_definition = dist.Normal(self.mean, self.std)
+            random_variable_name = self.name.value
+            observed_values = self.obs.value
+            return pyro.sample(random_variable_name, distribution_definition, obs=observed_values)
+
+        self.sample.value = sample_wrapper
+
+
+@xai_component(color="#70A3B3")
+class GammaSampler(Component):
+    name: InArg[str]
+    concentration: InArg[float]
+    rate: InArg[float]
+    obs: InArg[list]
+    sample: OutArg[any]
+
+    def __init__(self):
+        super().__init__()
+        self.name = InArg.empty()
+        self.concentration = InArg.empty()
+        self.rate = InArg.empty()
+        self.obs = InArg.empty()
+        self.sample = OutArg.empty()
+
+    def execute(self, ctx) -> None:
+        obs_value = self.obs.value
+        if obs_value is not None:
+            obs_value = torch.tensor(obs_value, dtype=torch.float32)
+        if self.name.value is None:
+            self.name.value = "Random Variable"
+
+        def sample_wrapper():
+            distribution_definition = dist.Gamma(self.concentration, self.rate)
+            random_variable_name = self.name.value
+            observed_values = self.obs.value
+            return pyro.sample(random_variable_name, distribution_definition, obs=observed_values)
+
+        self.sample.value = sample_wrapper
+
+
+@xai_component(color="#70A3B3")
+class UniformSampler(Component):
+    name: InArg[str]
+    low: InArg[float]
+    high: InArg[float]
+    obs: InArg[list]
+    sample: OutArg[any]
+
+    def __init__(self):
+        super().__init__()
+        self.name = InArg.empty()
+        self.low = InArg.empty()
+        self.high = InArg.empty()
+        self.obs = InArg.empty()
+        self.sample = OutArg.empty()
+
+    def execute(self, ctx) -> None:
+        obs_value = self.obs.value
+        if obs_value is not None:
+            obs_value = torch.tensor(obs_value, dtype=torch.float32)
+        if self.name.value is None:
+            self.name.value = "Random Variable"
+
+        def sample_wrapper():
+            distribution_definition = dist.Uniform(self.low, self.high)
+            random_variable_name = self.name.value
+            observed_values = self.obs.value
+            return pyro.sample(random_variable_name, distribution_definition, obs=observed_values)
+
+        self.sample.value = sample_wrapper
