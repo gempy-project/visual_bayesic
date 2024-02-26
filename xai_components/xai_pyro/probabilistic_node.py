@@ -1,7 +1,7 @@
 import torch
 import pyro
 from pyro.infer import Predictive, NUTS, MCMC
-from xai_components.base import InArg, OutArg, Component, xai_component, dynalist
+from xai_components.base import InArg, OutArg, Component, xai_component, dynalist, InCompArg
 
 
 @xai_component(color="#b47194")
@@ -118,13 +118,13 @@ class PosteriorPredictive(Component):
 
 @xai_component(color="#776f85")
 class FullInference(Component):
-    model: InArg[callable]
+    model: InCompArg[callable]
     num_samples: InArg[int]
     num_chains: InArg[int]
     args: InArg[dynalist]
-    posterior_samples: OutArg[any]
-    posterior_predictive: OutArg[any]
-    prior_predictive: OutArg[any]
+    mcmc: OutArg[pyro.infer.MCMC]
+    prior_predictive: OutArg[dict]
+    posterior_predictive: OutArg[dict]
 
     def __init__(self):
         super().__init__()
@@ -132,7 +132,7 @@ class FullInference(Component):
         self.num_samples.value = 100
         self.num_chains.value = 1
         self.args = InArg.empty()
-        self.posterior_samples = OutArg.empty()
+        self.mcmc = OutArg.empty()
         self.posterior_predictive = OutArg.empty()
         self.prior_predictive = OutArg.empty()
 
@@ -144,7 +144,7 @@ class FullInference(Component):
         nuts_kernel = pyro.infer.NUTS(model)
         mcmc = pyro.infer.MCMC(nuts_kernel, num_samples=num_samples, num_chains=num_chains)
         posterior_samples = mcmc.run(args_list)
-        self.posterior_samples.value = posterior_samples
+        self.mcmc.value = mcmc
         
         # * Prior predictive
         predictive = pyro.infer.Predictive(

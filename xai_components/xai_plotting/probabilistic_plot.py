@@ -1,14 +1,18 @@
+import arviz
 import arviz as az
 import pyro
 from matplotlib import pyplot as plt
 from matplotlib.ticker import StrMethodFormatter
 
-from xai_components.base import InArg, Component, xai_component, OutArg
+from xai_components.base import InArg, Component, xai_component, OutArg, InCompArg
+
+cyanish_ = ["arviz-white", "arviz-cyanish"]
+az.style.context(cyanish_, True)
 
 
 @xai_component(color="#4d4141")
 class ArvizObject(Component):
-    mcmc: InArg[pyro.infer.MCMC]
+    mcmc: InCompArg[pyro.infer.MCMC]
     prior_predictive_values: InArg[dict]
     posterior_predictive_values: InArg[dict]
     az_data: OutArg[az.InferenceData]
@@ -19,7 +23,6 @@ class ArvizObject(Component):
         self.prior_predictive_values = InArg.empty()
         self.posterior_predictive_values = InArg.empty()
         self.az_data = OutArg.empty()
-
 
     def execute(self, ctx) -> None:
         az_data = az.from_pyro(
@@ -33,17 +36,37 @@ class ArvizObject(Component):
 
 @xai_component(color="#776f85")
 class PlotTrace(Component):
+    az_data: InCompArg[az.InferenceData]
+    plot: OutArg[any]
+
+    def execute(self, ctx) -> None:
+        with az.style.context(cyanish_, after_reset=True):
+            data_value: arviz.InferenceData = self.az_data.value
+            self.plot.value = az.plot_trace(data_value)
+            plt.show()
+
+
+@xai_component(color="#776f85")
+class PlotDensity(Component):
     az_data: InArg[az.InferenceData]
     plot: OutArg[any]
 
     def execute(self, ctx) -> None:
-        self.plot.value = az.plot_trace(self.az_data.value)
+        data_value: arviz.InferenceData = self.az_data.value
+        self.plot.value = az.plot_trace(data_value)
+
+        with az.style.context(cyanish_, after_reset=True):
+            axes = az.plot_density(
+                [data_value, data_value.prior],
+                data_labels=["Posterior", "Prior"],
+                shade=0.2,
+            )
         plt.show()
 
 
 @xai_component(color="#70A3B3")
 class PlotPrior(Component):
-    az_data: InArg[az.InferenceData]
+    az_data: InCompArg[az.InferenceData]
     plot: OutArg[any]
 
     def execute(self, ctx) -> None:
@@ -54,7 +77,7 @@ class PlotPrior(Component):
 
 @xai_component(color="#DA8886")
 class PlotNormalLikelihood(Component):
-    az_data: InArg[az.InferenceData]
+    az_data: InCompArg[az.InferenceData]
     mean_sample_name: InArg[str]
     std_sample_name: InArg[str]
     y_sample_name: InArg[str]
@@ -66,7 +89,7 @@ class PlotNormalLikelihood(Component):
         except ImportError:
             print("You need to install gempy_probability to use this component.")
             return
-            
+
         p = PlotPosterior(self.az_data.value)
         p.create_figure(figsize=(9, 3), joyplot=False, marginal=False)
         p.plot_normal_likelihood(
@@ -75,7 +98,7 @@ class PlotNormalLikelihood(Component):
             obs=self.y_sample_name.value,
             iteration=-1,
         )
-        
+
         # p.likelihood_axes.set_xlim(1.70, 2.40)
         p.likelihood_axes.xaxis.set_major_formatter(StrMethodFormatter('{x:,.2f}'))
         for tick in p.likelihood_axes.get_xticklabels():
@@ -85,7 +108,7 @@ class PlotNormalLikelihood(Component):
 
 @xai_component(color="#DA8886")
 class PlotNormalLikelihoodJoy(Component):
-    az_data: InArg[az.InferenceData]
+    az_data: InCompArg[az.InferenceData]
     mean_sample_name: InArg[str]
     std_sample_name: InArg[str]
     y_sample_name: InArg[str]
@@ -95,7 +118,7 @@ class PlotNormalLikelihoodJoy(Component):
     def __init__(self):
         super().__init__()
         self.n_samples = InArg(31)
-        
+
     def execute(self, ctx) -> None:
         try:
             from gempy_probability.plot_posterior import PlotPosterior
@@ -107,8 +130,8 @@ class PlotNormalLikelihoodJoy(Component):
 
         p.create_figure(figsize=(9, 9), joyplot=True, marginal=False, likelihood=False, n_samples=self.n_samples.value)
         p.plot_joy(
-            var_names=(self.mean_sample_name.value, self.std_sample_name.value), 
-            obs= self.y_sample_name.value,
+            var_names=(self.mean_sample_name.value, self.std_sample_name.value),
+            obs=self.y_sample_name.value,
             iteration=self.n_samples.value // 2
         )
         plt.show()
