@@ -113,3 +113,46 @@ class PosteriorPredictive(Component):
         args_list = self.args.value
         posterior_predictive = predictive(args_list)
         self.posterior_predictive.value = posterior_predictive
+
+
+
+@xai_component(color="#776f85")
+class FullInference(Component):
+    model: InArg[callable]
+    num_samples: InArg[int]
+    num_chains: InArg[int]
+    args: InArg[dynalist]
+    posterior_samples: OutArg[any]
+    posterior_predictive: OutArg[any]
+    prior_predictive: OutArg[any]
+
+    def __init__(self):
+        super().__init__()
+        self.model = InArg.empty()
+        self.num_samples = InArg.empty()
+        self.num_chains = InArg.empty()
+        self.args = InArg.empty()
+        self.posterior_samples = OutArg.empty()
+        self.posterior_predictive = OutArg.empty()
+        self.prior_predictive = OutArg.empty()
+
+    def execute(self, ctx) -> None:
+        model = self.model.value
+        num_samples = self.num_samples.value
+        num_chains = self.num_chains.value
+        args_list = self.args.value
+        nuts_kernel = pyro.infer.NUTS(model)
+        mcmc = pyro.infer.MCMC(nuts_kernel, num_samples=num_samples, num_chains=num_chains)
+        posterior_samples = mcmc.run(args_list)
+        self.posterior_samples.value = posterior_samples
+        
+        # if (self.posterior_predictive.)
+        predictive = pyro.infer.Predictive(model, posterior_samples)
+        posterior_predictive = predictive(args_list)
+        self.posterior_predictive.value = posterior_predictive
+        
+        prior_predictive = predictive(args_list)
+        self.prior_predictive.value = prior_predictive
+        
+        
+    
