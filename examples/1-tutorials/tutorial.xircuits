@@ -1,12 +1,12 @@
 {
     "id": "32de4ff3-ab9b-417c-9303-b6c1e14e0fa6",
-    "offsetX": -174.5509835717628,
-    "offsetY": 516.1679899048321,
+    "offsetX": -515.5509835717628,
+    "offsetY": 435.1679899048321,
     "zoom": 84.99999999999996,
     "gridSize": 0,
     "layers": [
         {
-            "id": "9a3000d1-30c6-43b1-8d5f-5f2dbe1fe660",
+            "id": "5686ea2b-c4d5-4629-9956-6c3c4b31e18c",
             "type": "diagram-links",
             "isSvg": true,
             "transformed": true,
@@ -561,8 +561,8 @@
                         {
                             "id": "a47a0902-33f1-4561-9377-9a809f6380a3",
                             "type": "point",
-                            "x": 963.078,
-                            "y": 12.797
+                            "x": 885.431,
+                            "y": 38.679
                         }
                     ],
                     "labels": [],
@@ -589,8 +589,8 @@
                         {
                             "id": "e9331ade-b534-4171-842c-e41fd48391ba",
                             "type": "point",
-                            "x": 963.078,
-                            "y": -3.203
+                            "x": 885.431,
+                            "y": 22.679
                         }
                     ],
                     "labels": [],
@@ -611,8 +611,8 @@
                         {
                             "id": "aaf13c45-a0cb-4704-a6e9-e93cfcdd800e",
                             "type": "point",
-                            "x": 1108.891,
-                            "y": -3.203
+                            "x": 1031.244,
+                            "y": 22.679
                         },
                         {
                             "id": "b96f4527-fc5a-4eea-aa42-aa1801d88ceb",
@@ -658,7 +658,7 @@
                 "26b7b5b2-ca8d-44c9-b4ca-7cc6e053bfe2": {
                     "id": "26b7b5b2-ca8d-44c9-b4ca-7cc6e053bfe2",
                     "type": "parameter-link",
-                    "selected": true,
+                    "selected": false,
                     "source": "f8643867-02cb-42e4-9ff4-9bbb8149a76f",
                     "sourcePort": "6b500a24-6c26-49e3-8784-1a8fb46ded81",
                     "target": "2e9a0476-6336-45ec-bdcf-47a6235e6789",
@@ -667,8 +667,8 @@
                         {
                             "id": "e5b9f708-5ebc-4c34-b60b-ec251ab9953f",
                             "type": "point",
-                            "x": 953.603,
-                            "y": 245.03
+                            "x": 953.594,
+                            "y": 245.031
                         },
                         {
                             "id": "b802c3f1-7be3-4fad-a5ff-ea313074cabe",
@@ -686,7 +686,7 @@
             }
         },
         {
-            "id": "36fe209c-d89d-442d-9b78-5e7c6122f9d0",
+            "id": "b0fba01e-0afa-4a3a-b02f-2eca8b7b0070",
             "type": "diagram-nodes",
             "isSvg": false,
             "transformed": true,
@@ -1915,7 +1915,7 @@
                 "db423c2d-ecbf-4444-9445-5bd16e2edf31": {
                     "id": "db423c2d-ecbf-4444-9445-5bd16e2edf31",
                     "type": "custom-node",
-                    "selected": false,
+                    "selected": true,
                     "extras": {
                         "type": "debug",
                         "path": "xai_components/xai_plotting/probabilistic_plot.py",
@@ -1928,15 +1928,15 @@
                         ],
                         "borderColor": "rgb(0,192,255)"
                     },
-                    "x": 953.589,
-                    "y": -37.845,
+                    "x": 875.942,
+                    "y": -11.963,
                     "ports": [
                         {
                             "id": "ddecfcfc-cbd9-4c03-b30c-84b2822d2986",
                             "type": "default",
                             "extras": {},
-                            "x": 955.578,
-                            "y": -10.703,
+                            "x": 877.931,
+                            "y": 15.179,
                             "name": "in-0",
                             "alignment": "left",
                             "parentNode": "db423c2d-ecbf-4444-9445-5bd16e2edf31",
@@ -1953,8 +1953,8 @@
                             "id": "ccd7c567-a34e-4b72-8d3a-91d1eca6856e",
                             "type": "default",
                             "extras": {},
-                            "x": 955.578,
-                            "y": 5.297,
+                            "x": 877.931,
+                            "y": 31.179,
                             "name": "parameter-any-model_function",
                             "alignment": "left",
                             "parentNode": "db423c2d-ecbf-4444-9445-5bd16e2edf31",
@@ -1971,8 +1971,8 @@
                             "id": "a8962d70-73d8-4fb4-acd5-0393f2c88223",
                             "type": "default",
                             "extras": {},
-                            "x": 1101.391,
-                            "y": -10.703,
+                            "x": 1023.744,
+                            "y": 15.179,
                             "name": "out-0",
                             "alignment": "right",
                             "parentNode": "db423c2d-ecbf-4444-9445-5bd16e2edf31",
@@ -2035,7 +2035,7 @@
                 "f8643867-02cb-42e4-9ff4-9bbb8149a76f": {
                     "id": "f8643867-02cb-42e4-9ff4-9bbb8149a76f",
                     "type": "custom-node",
-                    "selected": true,
+                    "selected": false,
                     "extras": {
                         "type": "int"
                     },
@@ -2046,8 +2046,8 @@
                             "id": "6b500a24-6c26-49e3-8784-1a8fb46ded81",
                             "type": "default",
                             "extras": {},
-                            "x": 946.103,
-                            "y": 237.53,
+                            "x": 946.094,
+                            "y": 237.531,
                             "name": "out-0",
                             "alignment": "right",
                             "parentNode": "f8643867-02cb-42e4-9ff4-9bbb8149a76f",

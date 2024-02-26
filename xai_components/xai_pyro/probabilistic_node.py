@@ -129,8 +129,8 @@ class FullInference(Component):
     def __init__(self):
         super().__init__()
         self.model = InArg.empty()
-        self.num_samples = InArg.empty()
-        self.num_chains = InArg.empty()
+        self.num_samples.value = 100
+        self.num_chains.value = 1
         self.args = InArg.empty()
         self.posterior_samples = OutArg.empty()
         self.posterior_predictive = OutArg.empty()
@@ -146,13 +146,14 @@ class FullInference(Component):
         posterior_samples = mcmc.run(args_list)
         self.posterior_samples.value = posterior_samples
         
-        # if (self.posterior_predictive.)
-        predictive = pyro.infer.Predictive(model, posterior_samples)
-        posterior_predictive = predictive(args_list)
-        self.posterior_predictive.value = posterior_predictive
-        
-        prior_predictive = predictive(args_list)
-        self.prior_predictive.value = prior_predictive
-        
-        
-    
+        # * Prior predictive
+        predictive = pyro.infer.Predictive(
+            model=model, 
+            posterior_samples=mcmc.get_samples(num_samples)
+        )
+        self.posterior_predictive.value = predictive(args_list)
+
+
+        # * Prior predictive
+        prior_predictive = pyro.infer.Predictive(model, num_samples=num_samples)
+        self.prior_predictive.value = prior_predictive(args_list)
