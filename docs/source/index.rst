@@ -37,7 +37,7 @@ Join our growing community of contributors! Whether you're fixing bugs, proposin
 Explore Our Comprehensive Guides
 --------------------------------
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Galleries
 
    examples/index
