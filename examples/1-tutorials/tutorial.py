@@ -6,6 +6,7 @@ Check out the tutorial.xircuit file to see the visual representation of the code
 from argparse import ArgumentParser
 """
 
+from argparse import ArgumentParser
 from xai_components.base import SubGraphExecutor
 from xai_components.xai_plotting.probabilistic_plot import PlotDensity, PlotNormalLikelihoodJoy, PlotPrior, ArvizObject, PlotTrace, VisualizeModelGraph
 from xai_components.xai_probabilistic_models.probabilistic_models_I import PyroModel

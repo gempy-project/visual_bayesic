@@ -21,6 +21,8 @@ def execute_and_display_graph(module_name):
 def import_model(module_name) -> ModuleType:
     # Dynamic import
     mod = import_module(f"models.{module_name}.{module_name}")
+
+    mod = import_module(f"models.{module_name}.{module_name}")
     return mod    
 
 
@@ -33,7 +35,7 @@ def execute_model(mod: ModuleType):
 def display_graph(mod: ModuleType):
     module_dir = os.path.dirname(os.path.abspath(mod.__file__))
     # Add module name to the path
-    img_path = os.path.join(module_dir, "graph.png")
+    img_path = os.path.join(module_dir, "graph_tutorial.png")
     img = mpimg.imread(img_path)
 
     plt.figure(figsize=(23, 10))
