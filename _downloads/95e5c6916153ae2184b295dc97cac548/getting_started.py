@@ -11,6 +11,7 @@ Let's dive in!
 
 import os
 import sys
+from importlib import import_module
 
 from visual_bayesic.runner import display_graph, execute_model, import_model
 
@@ -23,7 +24,7 @@ else:
 # Adjust the Python module search path to include the parent directory
 sys.path.append(os.path.join(base_path, '..'))
 
-normal_likelihood = import_model("normal_likelihood")
+normal_likelihood = import_module(f"tutorial")
 
 # %%
 # The visual scripting graph below represents the Bayesian inference process. 

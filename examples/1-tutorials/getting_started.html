@@ -22,7 +22,7 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Examples" href="../2-examples/index.html" />
+    <link rel="next" title="Getting started with Visual Bayesic" href="tutorial.html" />
     <link rel="prev" title="Tutorials" href="index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -53,6 +53,7 @@ defining and running Bayesian models more intuitive and user-friendly.</p>
 <p>Let’s dive in!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">import_module</span>
 
 <span class="kn">from</span> <span class="nn">visual_bayesic.runner</span> <span class="kn">import</span> <span class="n">display_graph</span><span class="p">,</span> <span class="n">execute_model</span><span class="p">,</span> <span class="n">import_model</span>
 
@@ -65,7 +66,7 @@ defining and running Bayesian models more intuitive and user-friendly.</p>
 <span class="c1"># Adjust the Python module search path to include the parent directory</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">))</span>
 
-<span class="n">normal_likelihood</span> <span class="o">=</span> <span class="n">import_model</span><span class="p">(</span><span class="s2">&quot;normal_likelihood&quot;</span><span class="p">)</span>
+<span class="n">normal_likelihood</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;tutorial&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The visual scripting graph below represents the Bayesian inference process.
@@ -78,30 +79,103 @@ This graphical view provides an intuitive way to understand the structure and fl
 <span class="n">execute_model</span><span class="p">(</span><span class="n">normal_likelihood</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_getting_started_002.png" srcset="../../_images/sphx_glr_getting_started_002.png" alt="Posterior distribution of mu" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Executing: DefinePrior
+<ul class="sphx-glr-horizontal">
+<li><img src="../../_images/sphx_glr_getting_started_002.png" srcset="../../_images/sphx_glr_getting_started_002.png" alt="getting started" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_getting_started_003.png" srcset="../../_images/sphx_glr_getting_started_003.png" alt="Likelihood mean , Likelihood mean , Likelihood std, Likelihood std" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_getting_started_004.png" srcset="../../_images/sphx_glr_getting_started_004.png" alt="Likelihood mean , Likelihood mean , Likelihood std, Likelihood std" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_getting_started_005.png" srcset="../../_images/sphx_glr_getting_started_005.png" alt="Likelihood mean , Likelihood mean , Likelihood std, Likelihood std" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_getting_started_006.png" srcset="../../_images/sphx_glr_getting_started_006.png" alt="Likelihood mean , Likelihood std" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_getting_started_007.png" srcset="../../_images/sphx_glr_getting_started_007.png" alt="getting started" class = "sphx-glr-multi-img"/></li>
+</ul>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Executing: NormalSampler
 
-Executing: DefineLikelihood
+Executing: GammaSampler
+
+Executing: NormalSampler
+
+Executing: PyroModel
 
 Executing: VisualizeModelGraph
 
-Executing: NUTSKernel
+Executing: FullInference
 
-Executing: RunMCMC
+Warmup:   0%|                                                       | 0/2000 [00:00, ?it/s]
+Warmup:   0%|             | 10/2000 [00:00, 95.88it/s, step size=7.28e-02, acc. prob=0.754]
+Warmup:   1%|▏           | 25/2000 [00:00, 108.99it/s, step size=1.92e-02, acc. prob=0.761]
+Warmup:   2%|▏            | 36/2000 [00:00, 93.40it/s, step size=8.41e-03, acc. prob=0.762]
+Warmup:   2%|▎            | 46/2000 [00:00, 67.03it/s, step size=5.95e-02, acc. prob=0.785]
+Warmup:   3%|▍            | 58/2000 [00:00, 73.60it/s, step size=4.64e-02, acc. prob=0.785]
+Warmup:   3%|▍            | 68/2000 [00:00, 79.33it/s, step size=2.87e-02, acc. prob=0.783]
+Warmup:   4%|▌            | 83/2000 [00:00, 91.44it/s, step size=3.75e-02, acc. prob=0.787]
+Warmup:   5%|▌            | 94/2000 [00:01, 96.08it/s, step size=2.18e-02, acc. prob=0.785]
+Warmup:   5%|▋           | 105/2000 [00:01, 97.83it/s, step size=6.60e-01, acc. prob=0.782]
+Warmup:   7%|▋          | 133/2000 [00:01, 146.50it/s, step size=1.53e+00, acc. prob=0.787]
+Warmup:   8%|▊          | 155/2000 [00:01, 164.37it/s, step size=3.35e-01, acc. prob=0.778]
+Warmup:   9%|▉          | 180/2000 [00:01, 185.85it/s, step size=7.07e-01, acc. prob=0.782]
+Warmup:  10%|█▏         | 207/2000 [00:01, 208.53it/s, step size=4.93e-01, acc. prob=0.782]
+Warmup:  12%|█▎         | 245/2000 [00:01, 257.63it/s, step size=5.91e-01, acc. prob=0.783]
+Warmup:  14%|█▍         | 272/2000 [00:01, 251.53it/s, step size=5.99e-01, acc. prob=0.781]
+Warmup:  15%|█▋         | 306/2000 [00:01, 275.39it/s, step size=6.66e-01, acc. prob=0.782]
+Warmup:  17%|█▊         | 334/2000 [00:02, 258.23it/s, step size=3.70e-01, acc. prob=0.782]
+Warmup:  18%|█▉         | 363/2000 [00:02, 265.24it/s, step size=3.84e-01, acc. prob=0.783]
+Warmup:  20%|██▏        | 395/2000 [00:02, 269.26it/s, step size=2.06e-01, acc. prob=0.783]
+Warmup:  21%|██▎        | 425/2000 [00:02, 274.29it/s, step size=5.89e-01, acc. prob=0.785]
+Warmup:  23%|██▌        | 461/2000 [00:02, 284.51it/s, step size=8.15e-02, acc. prob=0.783]
+Warmup:  25%|██▋        | 491/2000 [00:02, 287.43it/s, step size=6.40e-01, acc. prob=0.785]
+Warmup:  26%|██▊        | 522/2000 [00:02, 286.72it/s, step size=3.04e-01, acc. prob=0.785]
+Warmup:  28%|███        | 551/2000 [00:02, 283.37it/s, step size=5.96e-01, acc. prob=0.786]
+Warmup:  29%|███▏       | 585/2000 [00:02, 299.47it/s, step size=1.62e+00, acc. prob=0.787]
+Warmup:  31%|███▍       | 625/2000 [00:02, 328.50it/s, step size=6.79e-01, acc. prob=0.787]
+Warmup:  33%|███▌       | 659/2000 [00:03, 315.56it/s, step size=4.36e-01, acc. prob=0.787]
+Warmup:  35%|███▊       | 691/2000 [00:03, 314.70it/s, step size=5.23e-01, acc. prob=0.787]
+Warmup:  36%|███▉       | 723/2000 [00:03, 301.19it/s, step size=6.73e-01, acc. prob=0.788]
+Warmup:  38%|████▏      | 764/2000 [00:03, 329.53it/s, step size=5.81e-01, acc. prob=0.788]
+Warmup:  40%|████▍      | 798/2000 [00:03, 331.60it/s, step size=5.53e-01, acc. prob=0.788]
+Warmup:  42%|████▌      | 832/2000 [00:03, 314.01it/s, step size=6.72e-01, acc. prob=0.789]
+Warmup:  43%|████▊      | 869/2000 [00:03, 327.00it/s, step size=6.81e-01, acc. prob=0.789]
+Warmup:  45%|████▉      | 909/2000 [00:03, 346.96it/s, step size=9.65e-01, acc. prob=0.790]
+Warmup:  47%|█████▏     | 944/2000 [00:03, 324.31it/s, step size=4.58e-01, acc. prob=0.789]
+Warmup:  49%|█████▎     | 977/2000 [00:04, 296.38it/s, step size=1.13e+00, acc. prob=0.790]
+Sample:  51%|█████     | 1012/2000 [00:04, 310.50it/s, step size=6.56e-01, acc. prob=0.716]
+Sample:  52%|█████▏    | 1048/2000 [00:04, 323.47it/s, step size=6.56e-01, acc. prob=0.823]
+Sample:  54%|█████▍    | 1086/2000 [00:04, 337.70it/s, step size=6.56e-01, acc. prob=0.777]
+Sample:  56%|█████▋    | 1126/2000 [00:04, 352.97it/s, step size=6.56e-01, acc. prob=0.799]
+Sample:  58%|█████▊    | 1164/2000 [00:04, 359.77it/s, step size=6.56e-01, acc. prob=0.802]
+Sample:  60%|██████    | 1203/2000 [00:04, 364.98it/s, step size=6.56e-01, acc. prob=0.803]
+Sample:  62%|██████▏   | 1240/2000 [00:04, 363.49it/s, step size=6.56e-01, acc. prob=0.800]
+Sample:  64%|██████▍   | 1277/2000 [00:04, 362.79it/s, step size=6.56e-01, acc. prob=0.800]
+Sample:  66%|██████▌   | 1314/2000 [00:05, 356.19it/s, step size=6.56e-01, acc. prob=0.803]
+Sample:  68%|██████▊   | 1354/2000 [00:05, 368.66it/s, step size=6.56e-01, acc. prob=0.801]
+Sample:  70%|██████▉   | 1391/2000 [00:05, 364.47it/s, step size=6.56e-01, acc. prob=0.802]
+Sample:  72%|███████▏  | 1432/2000 [00:05, 373.75it/s, step size=6.56e-01, acc. prob=0.799]
+Sample:  74%|███████▎  | 1470/2000 [00:05, 357.50it/s, step size=6.56e-01, acc. prob=0.803]
+Sample:  75%|███████▌  | 1507/2000 [00:05, 360.54it/s, step size=6.56e-01, acc. prob=0.807]
+Sample:  77%|███████▋  | 1549/2000 [00:05, 377.53it/s, step size=6.56e-01, acc. prob=0.791]
+Sample:  79%|███████▉  | 1587/2000 [00:05, 371.91it/s, step size=6.56e-01, acc. prob=0.792]
+Sample:  81%|████████▏ | 1625/2000 [00:05, 364.43it/s, step size=6.56e-01, acc. prob=0.795]
+Sample:  83%|████████▎ | 1667/2000 [00:05, 379.47it/s, step size=6.56e-01, acc. prob=0.787]
+Sample:  85%|████████▌ | 1706/2000 [00:06, 381.60it/s, step size=6.56e-01, acc. prob=0.788]
+Sample:  87%|████████▋ | 1745/2000 [00:06, 380.17it/s, step size=6.56e-01, acc. prob=0.790]
+Sample:  89%|████████▉ | 1786/2000 [00:06, 386.71it/s, step size=6.56e-01, acc. prob=0.790]
+Sample:  91%|█████████▏| 1828/2000 [00:06, 394.91it/s, step size=6.56e-01, acc. prob=0.779]
+Sample:  94%|█████████▎| 1872/2000 [00:06, 408.18it/s, step size=6.56e-01, acc. prob=0.780]
+Sample:  96%|█████████▌| 1914/2000 [00:06, 410.49it/s, step size=6.56e-01, acc. prob=0.778]
+Sample:  98%|█████████▊| 1959/2000 [00:06, 421.05it/s, step size=6.56e-01, acc. prob=0.781]
+Sample: 100%|██████████| 2000/2000 [00:06, 294.10it/s, step size=6.56e-01, acc. prob=0.779]
 
-Warmup:   0%|                                              | 0/600 [00:00, ?it/s]
-Warmup:   9%|▎  | 55/600 [00:00, 540.29it/s, step size=1.95e+00, acc. prob=0.776]
-Sample:  22%|▍ | 132/600 [00:00, 674.30it/s, step size=1.38e+00, acc. prob=0.910]
-Sample:  35%|▋ | 210/600 [00:00, 720.78it/s, step size=1.38e+00, acc. prob=0.915]
-Sample:  48%|▉ | 286/600 [00:00, 730.68it/s, step size=1.38e+00, acc. prob=0.920]
-Sample:  62%|█▏| 374/600 [00:00, 781.06it/s, step size=1.38e+00, acc. prob=0.925]
-Sample:  76%|█▌| 457/600 [00:00, 796.84it/s, step size=1.38e+00, acc. prob=0.924]
-Sample:  91%|█▊| 544/600 [00:00, 818.22it/s, step size=1.38e+00, acc. prob=0.924]
-Sample: 100%|██| 600/600 [00:00, 767.44it/s, step size=1.38e+00, acc. prob=0.922]
 
+Executing: ArvizObject
+C:\Users\MigueldelaVarga\PycharmProjects\VisualBayesic\venv\lib\site-packages\arviz\data\io_pyro.py:157: UserWarning: Could not get vectorized trace, log_likelihood group will be omitted. Check your model vectorization or set log_likelihood=False
+  warnings.warn(
 
-Executing: CaptureScreenshot
+Executing: PlotPrior
 
-Executing: PlotPosterior
+Executing: PlotTrace
+
+Executing: PlotDensity
+
+Executing: PlotNormalLikelihoodJoy
+Setting Backend To: AvailableBackends.numpy
 </pre></div>
 </div>
 <section id="conclusion">
@@ -109,7 +183,7 @@ Executing: PlotPosterior
 <p>Through this example, we experienced the unique approach of <cite>visual_bayesic</cite> that harnesses the power of
 visual scripting to simplify Bayesian inference. This intuitive blend of graphics and code empowers users
 to effectively define, understand, and execute Bayesian models.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.098 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.874 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-1-tutorials-getting-started-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/95e5c6916153ae2184b295dc97cac548/getting_started.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">getting_started.py</span></code></a></p>
@@ -167,9 +241,10 @@ to effectively define, understand, and execute Bayesian models.</p>
 <li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Getting started with Visual Bayesic</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../2-examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-examples/index.html">Simple example using Pyro: Moving the bell</a></li>
 </ul>
 
 
@@ -188,7 +263,7 @@ to effectively define, understand, and execute Bayesian models.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2023-2023, Miguel de la Varga and Maximilian Hallenberger.
+      &copy;2023-2024, Miguel de la Varga and Maximilian Hallenberger.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>

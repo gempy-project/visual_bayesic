@@ -6,8 +6,10 @@
 
 Computation times
 =================
-**00:02.098** total execution time for **examples_1-tutorials** files:
+**00:12.333** total execution time for **examples_1-tutorials** files:
 
 +----------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_1-tutorials_getting_started.py` (``getting_started.py``) | 00:02.098 | 0.0 MB |
+| :ref:`sphx_glr_examples_1-tutorials_tutorial.py` (``tutorial.py``)               | 00:12.333 | 0.0 MB |
++----------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_1-tutorials_getting_started.py` (``getting_started.py``) | 00:00.000 | 0.0 MB |
 +----------------------------------------------------------------------------------+-----------+--------+

@@ -35,6 +35,23 @@ you can do it.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Check out the tutorial.xircuit file to see the visual representation of the code below. from ar...">
+
+.. only:: html
+
+  .. image:: /examples/1-tutorials/images/thumb/sphx_glr_tutorial_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_1-tutorials_tutorial.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Getting started with Visual Bayesic</div>
+    </div>
+
+
+.. raw:: html
+
     </div>
 
 
@@ -42,4 +59,5 @@ you can do it.
    :hidden:
 
    /examples/1-tutorials/getting_started
+   /examples/1-tutorials/tutorial
 

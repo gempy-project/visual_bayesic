@@ -19,6 +19,7 @@
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -47,14 +48,60 @@
 <h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">¶</a></h2>
 <p>Here you will find a selection of examples showing what can you do and how
 you can do it.</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="visual_bayesic leverages the power of visual scripting to simplify and enhance the Bayesian inf..."><img alt="" src="../_images/sphx_glr_getting_started_thumb1.png" />
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="visual_bayesic leverages the power of visual scripting to simplify and enhance the Bayesian inf..."><img alt="" src="../_images/sphx_glr_getting_started_thumb.png" />
 <p><a class="reference internal" href="1-tutorials/getting_started.html#sphx-glr-examples-1-tutorials-getting-started-py"><span class="std std-ref">Getting Started with Visual Scripting in Bayesian Inference</span></a></p>
   <div class="sphx-glr-thumbnail-title">Getting Started with Visual Scripting in Bayesian Inference</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Check out the tutorial.xircuit file to see the visual representation of the code below. from ar..."><img alt="" src="../_images/sphx_glr_tutorial_thumb.png" />
+<p><a class="reference internal" href="1-tutorials/tutorial.html#sphx-glr-examples-1-tutorials-tutorial-py"><span class="std std-ref">Getting started with Visual Bayesic</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Getting started with Visual Bayesic</div>
 </div></div></section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
-<p>These are examples of how to use the library.</p>
-<div class="sphx-glr-thumbnails"></div><div class="toctree-wrapper compound">
+<section id="simple-example-using-pyro-moving-the-bell">
+<h2>Simple example using Pyro: Moving the bell<a class="headerlink" href="#simple-example-using-pyro-moving-the-bell" title="Link to this heading">¶</a></h2>
+<p>We can sum up the workflow above in the following steps:</p>
+<ol class="arabic simple">
+<li><p>We chose a probabilistic density function family <span class="math notranslate nohighlight">\(\pi\)</span>—e.g., of the Gaussian or uniform families, <span class="math notranslate nohighlight">\(\pi_S(\theta)\)</span> to approximate the <em>data generating process</em>.</p></li>
+<li><p>We narrow the possible values of <span class="math notranslate nohighlight">\(\theta\)</span>—mean and standard deviation in the case of a Normal distribution—with domain knowledge (notice that although <span class="math notranslate nohighlight">\(\pi_S\)</span> is a subset of <span class="math notranslate nohighlight">\(\pi_P\)</span>, its size is infinite and therefore exhaustive approaches are unfeasible).</p></li>
+<li><p>We use Bayesian inference to condition the prior estimations to our samples of reality <span class="math notranslate nohighlight">\(\pi_S(\tilde{y})|\theta)\)</span>.</p></li>
+</ol>
+<p>Back to the thickness example, we need to assign some prior distribution to the mean and standard deviation of the thickness; for example, we can take a naive approach and use the values of the crust, or on the contrary, we could use only the data we gathered and maybe one or two references. At this stage, there is not one single valid answer. To analyze how different priors affect, we will use 4 possible configurations, 2 of them using a normal distribution for the mean of a Gaussian likelihood function and the other 2 using a uniform distribution—between 0 and 10 in order to keep it as uninformative as possible while still giving valid physical values:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Normal</strong></p></th>
+<th class="head"><p><strong>Uniform</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\theta_\mu \sim \mathcal{N}(\mu=2.08, \sigma=0.07)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\theta_\mu \sim \mathcal{U}(a=0, b=10)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\theta_\sigma \sim \Gamma(\alpha=0.3, \beta=3)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\theta_\sigma \sim \Gamma(=1.0, \beta=0.7)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\pi_S(y|\theta) \sim \mathcal{N}(\mu=\theta_\mu, \sigma=\theta_\sigma)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\pi_S(y|\theta) \sim \mathcal{N}(\mu=\theta_\mu, \sigma=\theta_\sigma)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The standard deviation is in both cases a quite uninformative Gamma distribution. Besides using different probability functions to describe one of the model parameters, we have also repeated the same simulation either using one observation, <span class="math notranslate nohighlight">\(\tilde{y}\)</span> at 2.12 m, or 10 observation spread randomly (as random as a human possibly can) around 2.10. Figure <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig-models1</span></code> shows the joint prior (in blue) and posterior (in red) distributions for the 4 probabilistic models, as well as, the maximum likelihood function.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Visual Scripting compiled model"><img alt="" src="../_images/sphx_glr_1-visual_scripting_thumb.png" />
+<p><a class="reference internal" href="2-examples/1-visual_scripting.html#sphx-glr-examples-2-examples-1-visual-scripting-py"><span class="std std-ref">Visual Scripting compiled model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Visual Scripting compiled model</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Normal Prior, several observations"><img alt="" src="../_images/sphx_glr_1.1_Intro_to_Bayesian_Inference_thumb.png" />
+<p><a class="reference internal" href="2-examples/1.1_Intro_to_Bayesian_Inference.html#sphx-glr-examples-2-examples-1-1-intro-to-bayesian-inference-py"><span class="std std-ref">Normal Prior, several observations</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Normal Prior, several observations</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Uniform Prior, several observations"><img alt="" src="../_images/sphx_glr_1.2_Intro_to_Bayesian_Inference_thumb.png" />
+<p><a class="reference internal" href="2-examples/1.2_Intro_to_Bayesian_Inference.html#sphx-glr-examples-2-examples-1-2-intro-to-bayesian-inference-py"><span class="std std-ref">Uniform Prior, several observations</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Uniform Prior, several observations</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Uniform Prior, single observation"><img alt="" src="../_images/sphx_glr_1.3_Intro_to_Bayesian_Inference_thumb.png" />
+<p><a class="reference internal" href="2-examples/1.3_Intro_to_Bayesian_Inference.html#sphx-glr-examples-2-examples-1-3-intro-to-bayesian-inference-py"><span class="std std-ref">Uniform Prior, single observation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Uniform Prior, single observation</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Normal Prior, single observation"><img alt="" src="../_images/sphx_glr_1.4_Intro_to_Bayesian_Inference_thumb.png" />
+<p><a class="reference internal" href="2-examples/1.4_Intro_to_Bayesian_Inference.html#sphx-glr-examples-2-examples-1-4-intro-to-bayesian-inference-py"><span class="std std-ref">Normal Prior, single observation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Normal Prior, single observation</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of a Pyro model and inference"><img alt="" src="../_images/sphx_glr__aux_func_thumb.png" />
+<p><a class="reference internal" href="2-examples/_aux_func.html#sphx-glr-examples-2-examples-aux-func-py"><span class="std std-ref">Example of a Pyro model and inference</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Example of a Pyro model and inference</div>
+</div></div><div class="toctree-wrapper compound">
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
@@ -98,14 +145,18 @@ you can do it.</p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Gallery</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#tutorials">Tutorials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-example-using-pyro-moving-the-bell">Simple example using Pyro: Moving the bell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="1-tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2-examples/index.html">Simple example using Pyro: Moving the bell</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../external/external_examples.html">External Examples</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="1-tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-examples/index.html">Simple example using Pyro: Moving the bell</a></li>
 </ul>
 
 
@@ -124,7 +175,7 @@ you can do it.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2023-2023, Miguel de la Varga and Maximilian Hallenberger.
+      &copy;2023-2024, Miguel de la Varga and Maximilian Hallenberger.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
