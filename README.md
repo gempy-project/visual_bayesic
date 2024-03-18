@@ -22,7 +22,7 @@ Documentation (Work in Progress)
 Explore our early documentation here:
 
 Key resources:
-- [Developers Guide](https://gempy-project.github.io/visual-bayesic-xircuits/)
+- [Developers Guide](https://gempy-project.github.io/visual_bayesic/contributing.html)
 
 
 
